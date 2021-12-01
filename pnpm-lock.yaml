@@ -1,6 +1,6 @@
 dependencies:
-  solid-app-router: 0.1.5_solid-js@1.1.1
-  solid-js: 1.1.1
+  solid-app-router: 0.1.13_solid-js@1.2.5
+  solid-js: 1.2.5
 devDependencies:
   vite: 2.6.14
   vite-plugin-solid: 2.0.3
@@ -942,17 +942,22 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-b39TBaTSfV6yBrapU89p5fKekE2m/NwnDocOVruQFS1/veMgdzuPcnOM34M6CwxW8jH/lxEa5rBoDeUwu5HHTw==
-  /solid-app-router/0.1.5_solid-js@1.1.1:
+  /solid-app-router/0.1.13_solid-js@1.2.5:
     dependencies:
-      solid-js: 1.1.1
+      solid-js: 1.2.5
     dev: false
     peerDependencies:
       solid-js: ^1.0.0
     resolution:
-      integrity: sha512-8wxpBP1pOea4rQFba1NH6uyPFBvqcSxHB4i9dSuoQw5OABgecvrFfAe+0TbYCP/7OhJ9RcEfsej+LBEdE/YS0Q==
+      integrity: sha512-tO6JNmKQ3c1P8c3Rzea6r93AzqIctaS5okbfwyfw1pp5gnX4stAeS9kz/xQfXnycrlMGskbql2w7AuR6b2Nu7g==
   /solid-js/1.1.1:
+    dev: true
     resolution:
       integrity: sha512-BtNNMUjBGtkx4viW5q/oqU4DOHa3WRhylN302cVVIeiBUGw6uzAE+NhNF12bAvSYJOCHLyGHpUEIeWklkeGgsg==
+  /solid-js/1.2.5:
+    dev: false
+    resolution:
+      integrity: sha512-XcPEULgqd/XbBu8LwtGWs5RGowvIpq88/ZNI/xgJ9PaxRJWwbVlSNsS+ywUWncxRdKsPoVe8vdcIsH4gBJjh3Q==
   /solid-refresh/0.2.2_solid-js@1.1.1:
     dependencies:
       solid-js: 1.1.1
@@ -1080,8 +1085,8 @@ packages:
     resolution:
       integrity: sha512-LusrIrryBFHAPQ/OOTbS4EWWuzI6eGeJglI9nQ3kDBr1cqH69NWt8Z8q59f9kTkgptXroejmWfksWwqgHs8EVw==
 specifiers:
-  solid-app-router: ^0.1.5
-  solid-js: ^1.1.1
+  solid-app-router: 0.1.13
+  solid-js: 1.2.5
   vite: ^2.5.7
   vite-plugin-solid: ^2.0.3
   vite-plugin-windicss: ^1.4.3
