@@ -3,6 +3,7 @@ import type { RouteDefinition } from "solid-app-router";
 
 import Home from "./pages/home";
 import AboutData from "./pages/about.data";
+import CreditsData from "./pages/credits.data";
 
 export const routes: RouteDefinition[] = [
   {
@@ -13,6 +14,11 @@ export const routes: RouteDefinition[] = [
     path: "/about",
     component: lazy(() => import("./pages/about")),
     data: AboutData,
+  },
+  {
+    path: "/credits",
+    component: lazy(() => import("./pages/credits")),
+    data: CreditsData,
   },
   {
     path: "**",
