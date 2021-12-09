@@ -1,4 +1,5 @@
-import "windi.css";
+// import "windi.css";
+import 'uno.css'
 
 import { render } from "solid-js/web";
 import { Router } from "solid-app-router";
