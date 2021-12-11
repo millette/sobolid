@@ -12,7 +12,7 @@
     "@unocss/preset-wind": "^0.15.6",
     "unocss": "^0.15.6",
     "vite": "2.7.1",
-    "vite-plugin-solid": "2.1.3"
+    "vite-plugin-solid": "2.1.4"
   },
   "dependencies": {
     "@unocss/reset": "^0.15.6",
