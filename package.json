@@ -10,12 +10,12 @@
   "license": "MIT",
   "devDependencies": {
     "@unocss/preset-wind": "0.16.1",
+    "@unocss/reset": "0.16.1",
     "unocss": "0.16.1",
     "vite": "2.7.1",
     "vite-plugin-solid": "2.1.4"
   },
   "dependencies": {
-    "@unocss/reset": "0.16.1",
     "solid-app-router": "0.1.14",
     "solid-js": "1.2.6"
   }
