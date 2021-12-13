@@ -6,7 +6,7 @@ specifiers:
   solid-app-router: 0.1.14
   solid-js: 1.2.6
   unocss: 0.16.1
-  vite: 2.7.1
+  vite: 2.7.2
   vite-plugin-solid: 2.1.4
 
 dependencies:
@@ -17,7 +17,7 @@ devDependencies:
   '@unocss/preset-wind': 0.16.1
   '@unocss/reset': 0.16.1
   unocss: 0.16.1
-  vite: 2.7.1
+  vite: 2.7.2
   vite-plugin-solid: 2.1.4
 
 packages:
@@ -1158,7 +1158,7 @@ packages:
       merge-anything: 4.0.2
       solid-js: 1.2.6
       solid-refresh: 0.3.2_solid-js@1.2.6
-      vite: 2.7.1
+      vite: 2.7.2
     transitivePeerDependencies:
       - less
       - sass
@@ -1166,8 +1166,8 @@ packages:
       - supports-color
     dev: true
 
-  /vite/2.7.1:
-    resolution: {integrity: sha512-TDXXhcu5lyQ6uosK4ZWaOyB4VzOiizk0biitRzDzaEtgSUi8rVYPc4k1xgOjLSf0OuceDJmojFKXHOX9DB1WuQ==}
+  /vite/2.7.2:
+    resolution: {integrity: sha512-wMffVVdKZRZP/HwW3yttKL8X+IJePz7bUcnGm0vqljffpVwHpjWC3duZtJQHAGvy+wrTjmwU7vkULpZ1dVXY6w==}
     engines: {node: '>=12.2.0'}
     hasBin: true
     peerDependencies:
