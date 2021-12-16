@@ -9,10 +9,12 @@ export default function Credits() {
     <section class="bg-pink-100 text-gray-700 p-8">
       <h1 class="text-2xl font-bold">Credits</h1>
       
+      <Suspense fallback="One moment...">
         <Shirts />
+      </Suspense>
       
       <p class="mt-4">This website's credits.</p>
-      <Suspense>
+      <Suspense fallback="Loading...">
         <pre class="mt-4">
           <code>{JSON.stringify(data, null, 2)}</code>
         </pre>
