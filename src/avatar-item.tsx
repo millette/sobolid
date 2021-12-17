@@ -24,9 +24,9 @@ async function parseIt(fn) {
   return Array.from(items)
 }
 
-export default function AvatarItem ({partsFileName}) {
+export default function AvatarItem (props) {
   const [name1, setName1] = createSignal(0)
-  const [shirts] = createResource(partsFileName, parseIt)
+  const [shirts] = createResource(props.partsFileName, parseIt)
 
   function s1() {
     if (shirts()[name1()][1] > 1) 
@@ -47,8 +47,30 @@ export default function AvatarItem ({partsFileName}) {
   }
 
 
+  function s4() {
+    if (shirts()[name1()][1] > 3) 
+      return `${shirts()[name1()][0]}_4_of_${shirts()[name1()][1]}`
+    return ""
+  }
+
+
+  function s5() {
+    if (shirts()[name1()][1] > 4) 
+      return `${shirts()[name1()][0]}_5_of_${shirts()[name1()][1]}`
+    return ""
+  }
+
+
+  function s6() {
+    if (shirts()[name1()][1] > 5) 
+      return `${shirts()[name1()][0]}_6_of_${shirts()[name1()][1]}`
+    return ""
+  }
+
+
 
   function clicky() {
+    if (shirts().length === 1) return
     if (name1() + 1 === shirts().length) {
       setName1(0)
     } else {
@@ -60,7 +82,9 @@ export default function AvatarItem ({partsFileName}) {
     <div>
     <Show when={!shirts.loading}>
       <div onClick={clicky}>
-      <p>Holla</p>
+      <p>Name: {shirts()[name1()][0]}</p>
+      <p>n Layers: {shirts()[name1()][1]}</p>
+      <p>Item: {name1() + 1} of {shirts().length}</p>
       <svg> 
         <use href={s1()}></use>
         <Show when={s2()}>
@@ -68,6 +92,15 @@ export default function AvatarItem ({partsFileName}) {
         </Show>
         <Show when={s3()}>
           <use href={s3()}></use>
+        </Show>
+        <Show when={s4()}>
+          <use href={s4()}></use>
+        </Show>
+        <Show when={s5()}>
+          <use href={s5()}></use>
+        </Show>
+        <Show when={s6()}>
+          <use href={s6()}></use>
         </Show>
       </svg>
       </div>
