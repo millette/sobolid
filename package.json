@@ -5,12 +5,19 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "format": "prettier --loglevel warn --write \"**/*.{js,css,md,ts,yaml,json,tsx}\"",
+    "posttest": "npm run format",
+    "prepare": "husky install"
   },
   "license": "MIT",
   "devDependencies": {
     "@unocss/preset-wind": "0.16.4",
     "@unocss/reset": "0.16.4",
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "mrm": "^3.0.10",
+    "prettier": ">=2",
     "unocss": "0.16.4",
     "vite": "2.7.3",
     "vite-plugin-solid": "2.1.4"
@@ -18,5 +25,8 @@
   "dependencies": {
     "solid-app-router": "0.1.14",
     "solid-js": "1.2.6"
+  },
+  "lint-staged": {
+    "*.{js,css,md,ts,yaml,json,tsx}": "prettier --write"
   }
 }
