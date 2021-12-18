@@ -63,12 +63,21 @@ export default function AvatarItem(props) {
     return ""
   }
 
-  function clicky() {
+  function next() {
     if (shirts().length === 1) return
     if (name1() + 1 === shirts().length) {
       setName1(0)
     } else {
       setName1(name1() + 1)
+    }
+  }
+
+  function previous() {
+    if (shirts().length === 1) return
+    if (name1() === 0) {
+      setName1(shirts().length - 1)
+    } else {
+      setName1(name1() - 1)
     }
   }
 
@@ -86,7 +95,22 @@ export default function AvatarItem(props) {
       style="min-height: 300px"
     >
       <Show when={!shirts.loading}>
-        <div onClick={clicky}>
+        <div>
+          <Show when={shirts().length > 1}>
+            <ul class="flex items-center">
+              <li class="flex-1" onClick={previous}>
+                <button class="p-2 text-white bg-indigo-500 rounded-full">
+                  ⬅ Previous
+                </button>
+              </li>
+              <li class="flex-1 text-right" onClick={next}>
+                <button class="p-2 text-white bg-indigo-500 rounded-full">
+                  Next ➡
+                </button>
+              </li>
+            </ul>
+          </Show>
+
           <div style="height: 7rem">
             <p>Name: {woot().type}</p>
             <p>Layers: {shirts()[name1()][1]}</p>
@@ -94,7 +118,7 @@ export default function AvatarItem(props) {
               Item: {woot().item} ({name1() + 1} of {shirts().length})
             </p>
           </div>
-          <svg style="background: white">
+          <svg class="bg-white">
             <Show when={s6()}>
               <use href={s6()}></use>
             </Show>
