@@ -1,11 +1,11 @@
-import type { Component } from "solid-js";
-import { Link, useRoutes, useLocation } from "solid-app-router";
+import type { Component } from "solid-js"
+import { Link, useRoutes, useLocation } from "solid-app-router"
 
-import { routes } from "./routes";
+import { routes } from "./routes"
 
 const App: Component = () => {
-  const location = useLocation();
-  const Route = useRoutes(routes);
+  const location = useLocation()
+  const Route = useRoutes(routes)
 
   return (
     <>
@@ -33,13 +33,14 @@ const App: Component = () => {
           </li>
 
           <li class="text-sm flex items-center space-x-1 ml-auto">
-            <label>URL:
-            <input
-              class="w-75px p-1 bg-white text-sm rounded-lg"
-              type="text"
-              readOnly
-              value={location.pathname}
-            />
+            <label>
+              URL:
+              <input
+                class="w-75px p-1 bg-white text-sm rounded-lg"
+                type="text"
+                readOnly
+                value={location.pathname}
+              />
             </label>
           </li>
         </ul>
@@ -49,7 +50,7 @@ const App: Component = () => {
         <Route />
       </main>
     </>
-  );
-};
+  )
+}
 
-export default App;
+export default App
