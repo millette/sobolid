@@ -46,13 +46,11 @@ export default function AvatarItem (props) {
     return ""
   }
 
-
   function s4() {
     if (shirts()[name1()][1] > 3) 
       return `${shirts()[name1()][0]}_4_of_${shirts()[name1()][1]}`
     return ""
   }
-
 
   function s5() {
     if (shirts()[name1()][1] > 4) 
@@ -60,14 +58,11 @@ export default function AvatarItem (props) {
     return ""
   }
 
-
   function s6() {
     if (shirts()[name1()][1] > 5) 
       return `${shirts()[name1()][0]}_6_of_${shirts()[name1()][1]}`
     return ""
   }
-
-
 
   function clicky() {
     if (shirts().length === 1) return
@@ -78,30 +73,40 @@ export default function AvatarItem (props) {
     }
   }
 
+  function woot() {
+    const p = shirts()[name1()][0].split("#")
+    return {
+      type: p[0].slice(15, -4),
+      item: p[1],
+    }
+  }
+
   return (
-    <div>
+    <div class="border-solid border-4 border-teal-600">
     <Show when={!shirts.loading}>
-      <div onClick={clicky}>
-      <p>Name: {shirts()[name1()][0]}</p>
-      <p>n Layers: {shirts()[name1()][1]}</p>
-      <p>Item: {name1() + 1} of {shirts().length}</p>
-      <svg> 
-        <use href={s1()}></use>
-        <Show when={s2()}>
-          <use href={s2()}></use>
-        </Show>
-        <Show when={s3()}>
-          <use href={s3()}></use>
-        </Show>
-        <Show when={s4()}>
-          <use href={s4()}></use>
+      <div onClick={clicky} style="height: 300px">
+        <div style="height: 7rem">
+          <p>Name: {woot().type}</p>
+          <p>Layers: {shirts()[name1()][1]}</p>
+          <p>Item: {woot().item} ({name1() + 1} of {shirts().length})</p>
+      </div>
+      <svg style="background: white"> 
+        <Show when={s6()}>
+          <use href={s6()}></use>
         </Show>
         <Show when={s5()}>
           <use href={s5()}></use>
         </Show>
-        <Show when={s6()}>
-          <use href={s6()}></use>
+        <Show when={s4()}>
+          <use href={s4()}></use>
         </Show>
+        <Show when={s3()}>
+          <use href={s3()}></use>
+        </Show>
+        <Show when={s2()}>
+          <use href={s2()}></use>
+        </Show>
+        <use href={s1()}></use>
       </svg>
       </div>
     </Show>

@@ -5,7 +5,7 @@ import AvatarItem from "../avatar-item"
 const itemTypes = [
   '/sprites/whole-armband.svg',
   '/sprites/whole-belt.svg',
-  '/sprites/whole-body.svg',
+  // '/sprites/whole-body.svg',
   '/sprites/whole-button.svg',
   '/sprites/whole-cloak.svg',
   '/sprites/whole-coat.svg',
@@ -45,12 +45,6 @@ export default function Credits() {
       </For>
       </div>
               
-      <p class="mt-4">This website's credits.</p>
-      <Suspense fallback="Loading...">
-        <pre class="mt-4">
-          <code>{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      </Suspense>
     </section>
   );
 }
