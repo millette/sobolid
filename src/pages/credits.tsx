@@ -1,5 +1,4 @@
-import { Suspense, For } from "solid-js"
-import { useData } from "solid-app-router"
+import { For } from "solid-js"
 import AvatarItem from "../avatar-item"
 
 const itemTypes = [
@@ -33,8 +32,6 @@ const itemTypes = [
 ]
 
 export default function Credits() {
-  const data = useData()
-
   return (
     <section class="bg-pink-100 text-gray-700 p-8">
       <h1 class="text-2xl font-bold">Credits</h1>
