@@ -1,5 +1,5 @@
 import { For } from "solid-js"
-import AvatarItem from "../avatar-item"
+import AvatarItemV2 from "../avatar-item-v2"
 
 const itemTypes = [
   "/sprites/whole-armband.svg",
@@ -40,7 +40,7 @@ export default function Credits() {
         <For each={itemTypes} fallback={<div>Loading...</div>}>
           {(item) => (
             <div class="">
-              <AvatarItem partsFileName={item} />
+              <AvatarItemV2 partsFileName={item} />
             </div>
           )}
         </For>
