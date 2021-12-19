@@ -1,4 +1,4 @@
-import { For } from "solid-js"
+import { createSignal, For, Show } from "solid-js"
 import AvatarItem from "../avatar-item"
 
 const itemTypes = [
@@ -31,16 +31,29 @@ const itemTypes = [
   "/sprites/whole-wings.svg",
 ]
 
+function itemName(item) {
+  return item.slice(15, -4)
+}
+
+//
+
 export default function Credits() {
+  const [selected, setSelected] = createSignal(0)
+
   return (
     <section class="bg-pink-100 text-gray-700 p-8">
       <h1 class="text-2xl font-bold">Credits</h1>
 
       <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <For each={itemTypes} fallback={<div>Loading...</div>}>
-          {(item) => (
-            <div class="">
-              <AvatarItem partsFileName={item} />
+          {(item, i) => (
+            <div>
+              <button onClick={setSelected.bind(null, i())}>
+                {itemName(item)}
+              </button>
+              <Show when={i() === selected()}>
+                <AvatarItem partsFileName={item} />
+              </Show>
             </div>
           )}
         </For>

@@ -89,6 +89,10 @@ export default function AvatarItem(props) {
     }
   }
 
+  function punch(type, item) {
+    console.log("PUNCH", type, item)
+  }
+
   return (
     <div
       class="border-solid border-4 border-teal-600"
@@ -118,7 +122,10 @@ export default function AvatarItem(props) {
               Item: {woot().item} ({name1() + 1} of {shirts().length})
             </p>
           </div>
-          <svg class="bg-white">
+          <svg
+            class="bg-white"
+            onClick={punch.bind(null, woot().type, woot().item)}
+          >
             <Show when={s6()}>
               <use href={s6()}></use>
             </Show>
