@@ -9,6 +9,7 @@ specifiers:
   prettier: ">=2"
   solid-app-router: 0.1.14
   solid-js: 1.2.6
+  solid-meta: ^0.27.2
   unocss: 0.16.4
   vite: 2.7.3
   vite-plugin-solid: 2.1.4
@@ -16,6 +17,7 @@ specifiers:
 dependencies:
   solid-app-router: 0.1.14_solid-js@1.2.6
   solid-js: 1.2.6
+  solid-meta: 0.27.2_solid-js@1.2.6
 
 devDependencies:
   "@unocss/preset-wind": 0.16.4
@@ -3556,6 +3558,17 @@ packages:
       {
         integrity: sha512-NvPHJ5Vj5f+ZJWIioickrC55seovSkDtm5NzSpnoUk3z4tATv0STpy5iuGNEn51ZORUcwpZzrMAtOCGziXU1XA==,
       }
+
+  /solid-meta/0.27.2_solid-js@1.2.6:
+    resolution:
+      {
+        integrity: sha512-t4rotsA99LMhiSI6C0pfN1fR8+bApl2ouOqIpOgxHtapJ+fgBIv7cVnI3nLMMzjiiML+vb83l9xes6/OLSCNtw==,
+      }
+    peerDependencies:
+      solid-js: ^1.0.0
+    dependencies:
+      solid-js: 1.2.6
+    dev: false
 
   /solid-refresh/0.3.2_solid-js@1.2.6:
     resolution:
