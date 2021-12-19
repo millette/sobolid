@@ -27,6 +27,11 @@ const App: Component = () => {
             </Link>
           </li>
           <li class="py-2 px-4">
+            <Link href="/mix" class="no-underline hover:underline">
+              Mix
+            </Link>
+          </li>
+          <li class="py-2 px-4">
             <Link href="/error" class="no-underline hover:underline">
               Error
             </Link>
