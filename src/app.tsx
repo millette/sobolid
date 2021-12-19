@@ -1,5 +1,6 @@
 import type { Component } from "solid-js"
 import { Link, useRoutes, useLocation } from "solid-app-router"
+import { MetaProvider, Title } from "solid-meta"
 
 import { routes } from "./routes"
 
@@ -8,7 +9,8 @@ const App: Component = () => {
   const Route = useRoutes(routes)
 
   return (
-    <>
+    <MetaProvider>
+      <Title>Title of page</Title>
       <nav class="bg-gray-200 text-gray-900 px-4">
         <ul class="flex items-center">
           <li class="py-2 px-4">
@@ -54,7 +56,7 @@ const App: Component = () => {
       <main>
         <Route />
       </main>
-    </>
+    </MetaProvider>
   )
 }
 
