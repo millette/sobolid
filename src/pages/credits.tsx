@@ -1,7 +1,8 @@
 import { createSignal, For, Show } from "solid-js"
 import { Title } from "solid-meta"
 
-import AvatarItem from "../avatar-item"
+import AvatarItem from "../components/avatar-item"
+import Body from "../components/body"
 
 const itemTypes = [
   "/sprites/whole-armband.svg",
@@ -44,6 +45,8 @@ export default function Credits() {
     <section class="bg-pink-100 text-gray-700 p-8">
       <Title>Credits page</Title>
       <h1 class="text-2xl font-bold">Credits</h1>
+
+      <Body />
 
       <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <For each={itemTypes} fallback={<div>Loading...</div>}>
