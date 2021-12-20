@@ -1,7 +1,7 @@
 import { For } from "solid-js"
 import { Title } from "solid-meta"
 
-import AvatarItemV2 from "../avatar-item-v2"
+import AvatarItemV2 from "../components/avatar-item-v2"
 
 const itemTypes = [
   "/sprites/whole-armband.svg",
