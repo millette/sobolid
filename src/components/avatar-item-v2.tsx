@@ -1,27 +1,6 @@
 import { createSignal, createResource, Show } from "solid-js"
 
-function isLayeredItem(item) {
-  const p = item.indexOf("_of_")
-  if (p === -1) return { name: item, n: 1 }
-  const n = parseInt(item.slice(p + 4), 10)
-  const name = item.slice(0, p - 2)
-  return { name, n }
-}
-
-async function parseIt(fn) {
-  const res = await fetch(fn)
-  const txt = await res.text()
-  const parser = new DOMParser()
-  const svgDoc = parser.parseFromString(txt, "image/svg+xml")
-
-  const items = new Map()
-  svgDoc.querySelectorAll("symbol").forEach((a, b) => {
-    const { name, n } = isLayeredItem(a.getAttribute("id"))
-    items.set(`${fn}#${name}`, n)
-  })
-
-  return Array.from(items)
-}
+import { parseIt } from "../utils/parse-it"
 
 export default function AvatarItemV2(props) {
   const [name1, setName1] = createSignal(0)
@@ -99,12 +78,12 @@ export default function AvatarItemV2(props) {
           <Show when={shirts().length > 1}>
             <ul class="flex items-center">
               <li class="flex-1" onClick={previous}>
-                <button class="p-2 text-white bg-indigo-500 rounded-full">
+                <button class="p-2 text-white bg-indigo-600 rounded-full">
                   ⬅ Previous
                 </button>
               </li>
               <li class="flex-1 text-right" onClick={next}>
-                <button class="p-2 text-white bg-indigo-500 rounded-full">
+                <button class="p-2 text-white bg-indigo-600 rounded-full">
                   Next ➡
                 </button>
               </li>
