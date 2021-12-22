@@ -12,13 +12,13 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@unocss/preset-wind": "0.16.4",
-    "@unocss/reset": "0.16.4",
+    "@unocss/preset-wind": "0.17.2",
+    "@unocss/reset": "0.17.2",
     "husky": ">=6",
     "lint-staged": ">=10",
     "mrm": "^3.0.10",
     "prettier": ">=2",
-    "unocss": "0.16.4",
+    "unocss": "0.17.2",
     "vite": "2.7.6",
     "vite-plugin-solid": "2.1.4"
   },
