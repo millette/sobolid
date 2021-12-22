@@ -11,7 +11,7 @@ specifiers:
   solid-js: 1.2.6
   solid-meta: ^0.27.2
   unocss: 0.16.4
-  vite: 2.7.4
+  vite: 2.7.6
   vite-plugin-solid: 2.1.4
 
 dependencies:
@@ -27,7 +27,7 @@ devDependencies:
   mrm: 3.0.10
   prettier: 2.5.1
   unocss: 0.16.4
-  vite: 2.7.4
+  vite: 2.7.6
   vite-plugin-solid: 2.1.4
 
 packages:
@@ -4033,7 +4033,7 @@ packages:
       merge-anything: 4.0.2
       solid-js: 1.2.6
       solid-refresh: 0.3.2_solid-js@1.2.6
-      vite: 2.7.4
+      vite: 2.7.6
     transitivePeerDependencies:
       - less
       - sass
@@ -4041,10 +4041,10 @@ packages:
       - supports-color
     dev: true
 
-  /vite/2.7.4:
+  /vite/2.7.6:
     resolution:
       {
-        integrity: sha512-f+0426k9R/roz5mRNwJlQ+6UOnhCwIypJSbfgCmsVzVJe9jTTM5iRX2GWYUean+iqPBWaU/dYLryx9AoH2pmrw==,
+        integrity: sha512-PBNoc87rDYLtkpFU9dbVeGdbcyKzz6c34oScqivE3FEa3BhVa4ASupCzcz0eDIiSECovfLcQnLUJt9vhiEU08g==,
       }
     engines: { node: ">=12.2.0" }
     hasBin: true

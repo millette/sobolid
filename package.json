@@ -19,7 +19,7 @@
     "mrm": "^3.0.10",
     "prettier": ">=2",
     "unocss": "0.16.4",
-    "vite": "2.7.4",
+    "vite": "2.7.6",
     "vite-plugin-solid": "2.1.4"
   },
   "dependencies": {
