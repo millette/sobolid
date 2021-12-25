@@ -15,7 +15,7 @@
     "@unocss/preset-wind": "0.17.3",
     "@unocss/reset": "0.17.3",
     "husky": ">=6",
-    "lint-staged": ">=10",
+    "lint-staged": "12.1.4",
     "mrm": "^3.0.10",
     "prettier": ">=2",
     "unocss": "0.17.3",
