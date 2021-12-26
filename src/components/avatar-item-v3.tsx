@@ -43,6 +43,10 @@ export default function AvatarItemV3(props) {
     setFullBody(full)
   }
 
+  function elItem(type) {
+    return `/sprites/whole-${type}.svg#${theParts()[type]}`
+  }
+
   return (
     <div class="border-solid border-4 border-teal-600">
       <Show when={!shirts.loading}>
@@ -64,7 +68,6 @@ export default function AvatarItemV3(props) {
             </For>
           </ul>
           <p>Number of parts: {Object.keys(theParts()).length}</p>
-          <pre>{JSON.stringify(theParts(), null, 2)}</pre>
 
           <Show when={fullBody().length > 0} fallback="Pick a body type">
             <svg viewBox="0 0 560 560" class="bg-white">
@@ -74,6 +77,10 @@ export default function AvatarItemV3(props) {
               <use href={`${props.partsFileName}#ihand_right`}></use>
               <For each={fullBody()}>
                 {(item) => <use href={`${props.partsFileName}#${item}`}></use>}
+              </For>
+
+              <For each={Object.keys(theParts())}>
+                {(item) => <use width="560" href={elItem(item)}></use>}
               </For>
             </svg>
           </Show>
