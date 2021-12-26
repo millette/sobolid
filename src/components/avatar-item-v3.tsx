@@ -1,5 +1,7 @@
 import { createSignal, createResource, Show, For } from "solid-js"
 
+import { theParts } from "../utils/state"
+
 function bodyParts(item) {
   const parts = item.split("_")
   if (parts.length === 2 && (parts[1] === "left" || parts[1] === "right")) {
@@ -61,6 +63,8 @@ export default function AvatarItemV3(props) {
               )}
             </For>
           </ul>
+          <p>Number of parts: {Object.keys(theParts()).length}</p>
+          <pre>{JSON.stringify(theParts(), null, 2)}</pre>
 
           <Show when={fullBody().length > 0} fallback="Pick a body type">
             <svg viewBox="0 0 560 560" class="bg-white">

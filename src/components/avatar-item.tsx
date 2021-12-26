@@ -1,6 +1,7 @@
 import { createSignal, createResource, Show } from "solid-js"
 
 import { parseIt } from "../utils/parse-it"
+import { theParts, addPart, removePart, hasPart } from "../utils/state"
 
 // type HeHa = Function => Array<number>
 
@@ -79,7 +80,12 @@ export default function AvatarItem(props) {
   }
 
   function punch(type, item) {
-    console.log("PUNCH", type, item)
+    console.log("PUNCH", type, item, theParts())
+    addPart(type, item)
+  }
+
+  function removeit(type) {
+    removePart(type)
   }
 
   return (
@@ -105,7 +111,12 @@ export default function AvatarItem(props) {
           </Show>
 
           <div style="height: 7rem">
-            <p>Name: {woot().type}</p>
+            <p>
+              Name: {woot().type}
+              <Show when={hasPart(woot().type)}>
+                <span onClick={removeit.bind(null, woot().type)}>[remove]</span>
+              </Show>
+            </p>
             <p>Layers: {shirts()[name1()][1]}</p>
             <p>
               Item: {woot().item} ({name1() + 1} of {shirts().length})
