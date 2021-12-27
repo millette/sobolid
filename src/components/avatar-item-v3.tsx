@@ -1,6 +1,6 @@
 import { createSignal, createResource, Show, For } from "solid-js"
 
-import { theParts } from "../utils/state"
+import { theParts, removePart } from "../utils/state"
 
 function bodyParts(item) {
   const parts = item.split("_")
@@ -71,16 +71,22 @@ export default function AvatarItemV3(props) {
 
           <Show when={fullBody().length > 0} fallback="Pick a body type">
             <svg viewBox="0 0 560 560" class="bg-white">
+              <For each={fullBody().reverse()}>
+                {(item) => <use href={`${props.partsFileName}#${item}`}></use>}
+              </For>
+
               <use href={`${props.partsFileName}#ifoot_left`}></use>
               <use href={`${props.partsFileName}#ifoot_right`}></use>
               <use href={`${props.partsFileName}#ihand_left`}></use>
               <use href={`${props.partsFileName}#ihand_right`}></use>
-              <For each={fullBody()}>
-                {(item) => <use href={`${props.partsFileName}#${item}`}></use>}
-              </For>
 
               <For each={Object.keys(theParts())}>
-                {(item) => <use width="560" href={elItem(item)}></use>}
+                {(item) => (
+                  <use
+                    onClick={removePart.bind(null, item)}
+                    href={elItem(item)}
+                  ></use>
+                )}
               </For>
             </svg>
           </Show>

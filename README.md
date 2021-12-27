@@ -1,3 +1,7 @@
+## WIP
+
+Oh well, the sprites need a revamp. Currently, scales are off when we add items to the body.
+
 ## Usage
 
 Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
