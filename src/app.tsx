@@ -1,8 +1,11 @@
+// npm
 import type { Component } from "solid-js"
-import { Link, useRoutes, useLocation } from "solid-app-router"
+import { NavLink, useRoutes, useLocation } from "solid-app-router"
 import { MetaProvider, Title } from "solid-meta"
 
+// self
 import { routes } from "./routes"
+import "./styles.css"
 
 const App: Component = () => {
   const location = useLocation()
@@ -14,29 +17,24 @@ const App: Component = () => {
       <nav class="bg-gray-200 text-gray-900 px-4">
         <ul class="flex items-center">
           <li class="py-2 px-4">
-            <Link href="/" class="no-underline hover:underline">
+            <NavLink end href="/" class="no-underline hover:underline">
               Home
-            </Link>
+            </NavLink>
           </li>
           <li class="py-2 px-4">
-            <Link href="/about" class="no-underline hover:underline">
+            <NavLink href="/about" class="no-underline hover:underline">
               About
-            </Link>
+            </NavLink>
           </li>
           <li class="py-2 px-4">
-            <Link href="/credits" class="no-underline hover:underline">
+            <NavLink href="/credits" class="no-underline hover:underline">
               Credits
-            </Link>
+            </NavLink>
           </li>
           <li class="py-2 px-4">
-            <Link href="/mix" class="no-underline hover:underline">
-              Mix
-            </Link>
-          </li>
-          <li class="py-2 px-4">
-            <Link href="/error" class="no-underline hover:underline">
+            <NavLink href="/error" class="no-underline hover:underline">
               Error
-            </Link>
+            </NavLink>
           </li>
 
           <li class="text-sm flex items-center space-x-1 ml-auto">
