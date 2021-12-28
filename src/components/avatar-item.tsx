@@ -1,17 +1,9 @@
+// npm
 import { createSignal, createResource, Show } from "solid-js"
 
+// self
 import { parseIt } from "../utils/parse-it"
 import { theParts, addPart, removePart, hasPart } from "../utils/state"
-
-// type HeHa = Function => Array<number>
-
-/*
-type Bar = (
-  () => number
-)
-
-type Foo = Array<Bar>
-*/
 
 export default function AvatarItem(props) {
   const [name1, setName1] = createSignal(0)

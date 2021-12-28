@@ -1,5 +1,7 @@
+// npm
 import { createSignal, createResource, Show } from "solid-js"
 
+// self
 import { parseIt } from "../utils/parse-it"
 
 export default function AvatarItemV2(props) {

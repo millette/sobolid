@@ -1,20 +1,22 @@
-function isLayeredItem(item) {
-  const p = item.indexOf("_of_")
+function isLayeredItem(item: string): { name: string; n: number } {
+  const p: number = item.indexOf("_of_")
   if (p === -1) return { name: item, n: 1 }
-  const n = parseInt(item.slice(p + 4), 10)
-  const name = item.slice(0, p - 2)
+  const n: number = parseInt(item.slice(p + 4), 10)
+  const name: string = item.slice(0, p - 2)
   return { name, n }
 }
 
-export async function parseIt(fn) {
-  const res = await fetch(fn)
-  const txt = await res.text()
+export async function parseIt(fn: string) {
+  const res: Response = await fetch(fn)
+  const txt: string = await res.text()
   const parser = new DOMParser()
-  const svgDoc = parser.parseFromString(txt, "image/svg+xml")
+  const svgDoc: Document = parser.parseFromString(txt, "image/svg+xml")
 
-  const items = new Map()
-  svgDoc.querySelectorAll("symbol").forEach((a, b) => {
-    const { name, n } = isLayeredItem(a.getAttribute("id"))
+  const items: Map<string, number> = new Map()
+  svgDoc.querySelectorAll("symbol").forEach((a: SVGSymbolElement) => {
+    const { name, n }: { name: string; n: number } = isLayeredItem(
+      a.getAttribute("id")
+    )
     items.set(`${fn}#${name}`, n)
   })
 
