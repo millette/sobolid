@@ -8,17 +8,22 @@
     "serve": "vite preview",
     "format": "prettier --loglevel warn --write \"**/*.{js,css,md,ts,yaml,json,tsx}\"",
     "posttest": "npm run format",
+    "eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "prepare": "husky install"
   },
   "license": "MIT",
   "type": "module",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
     "@unocss/preset-wind": "0.20.0",
     "@unocss/reset": "0.20.0",
+    "eslint": "^8.5.0",
     "husky": ">=6",
     "lint-staged": "12.1.4",
     "mrm": "^3.0.10",
     "prettier": ">=2",
+    "typescript": "^4.5.4",
     "unocss": "0.20.0",
     "vite": "2.7.9",
     "vite-plugin-solid": "2.1.4"
