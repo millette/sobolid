@@ -49,13 +49,6 @@ export default function AvatarItemV3(props: {
     setFullBody(full)
   }
 
-  // Add support for layered items!!!
-  function elItem(type: string): string {
-    console.log("TYPE", type, theParts()[type])
-    // return `/sprites/whole-${type}.svg#${theParts()[type]}`
-    return theParts()[type]
-  }
-
   return (
     <div class="border-solid border-4 border-teal-600">
       <Show when={!shirts.loading}>
@@ -90,11 +83,15 @@ export default function AvatarItemV3(props: {
               <use href={`${props.partsFileName}#ihand_right`}></use>
 
               <For each={Object.keys(theParts())}>
-                {(item) => (
-                  <use
-                    onClick={removePart.bind(null, item)}
-                    href={elItem(item)}
-                  ></use>
+                {(items) => (
+                  <For each={theParts()[items]}>
+                    {(item: string) => (
+                      <use
+                        onClick={removePart.bind(null, items)}
+                        href={item}
+                      ></use>
+                    )}
+                  </For>
                 )}
               </For>
             </svg>

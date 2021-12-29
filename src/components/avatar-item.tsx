@@ -75,9 +75,10 @@ export default function AvatarItem(props: {
     }
   }
 
-  function punch(type: string, item: string): void {
-    console.log("PUNCH", type, item, shirts())
-    console.log("PUNCH-s1-6", s1(), s2(), s3(), s4(), s5(), s6())
+  // function punch(type: string, item: string): void {
+  function punch(type: string): void {
+    // console.log("PUNCH", type, item, shirts())
+    // console.log("PUNCH-s1-6", s1(), s2(), s3(), s4(), s5(), s6())
     // addPart(type, item)
     addPart(type, [s1(), s2(), s3(), s4(), s5(), s6()].filter(Boolean))
   }
@@ -120,10 +121,7 @@ export default function AvatarItem(props: {
               Item: {woot().item} ({name1() + 1} of {shirts().length})
             </p>
           </div>
-          <svg
-            class="bg-white"
-            onClick={punch.bind(null, woot().type, woot().item)}
-          >
+          <svg class="bg-white" onClick={punch.bind(null, woot().type)}>
             <Show when={s6()}>
               <use href={s6()}></use>
             </Show>
