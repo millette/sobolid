@@ -4,13 +4,14 @@ import { createSignal, createResource, Show } from "solid-js"
 
 // self
 import { parseIt } from "../utils/parse-it"
-import { theParts, addPart, removePart, hasPart } from "../utils/state"
+// import { theParts, addPart, removePart, hasPart } from "../utils/state"
+import { addPart, removePart, hasPart } from "../utils/state"
 
 export default function AvatarItem(props: {
   partsFileName: string
 }): JSX.Element {
   const [name1, setName1] = createSignal(0)
-  const [shirts] = createResource(props.partsFileName, parseIt) //  : Foo
+  const [shirts] = createResource(props.partsFileName, parseIt)
 
   function s1(): string {
     if (shirts()[name1()][1] > 1)
@@ -75,8 +76,10 @@ export default function AvatarItem(props: {
   }
 
   function punch(type: string, item: string): void {
-    // console.log("PUNCH", type, item, theParts())
-    addPart(type, item)
+    console.log("PUNCH", type, item, shirts())
+    console.log("PUNCH-s1-6", s1(), s2(), s3(), s4(), s5(), s6())
+    // addPart(type, item)
+    addPart(type, [s1(), s2(), s3(), s4(), s5(), s6()].filter(Boolean))
   }
 
   function removeit(type: string): void {

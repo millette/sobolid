@@ -49,8 +49,11 @@ export default function AvatarItemV3(props: {
     setFullBody(full)
   }
 
+  // Add support for layered items!!!
   function elItem(type: string): string {
-    return `/sprites/whole-${type}.svg#${theParts()[type]}`
+    console.log("TYPE", type, theParts()[type])
+    // return `/sprites/whole-${type}.svg#${theParts()[type]}`
+    return theParts()[type]
   }
 
   return (
