@@ -1,10 +1,11 @@
+import type { JSX } from "solid-js/jsx-runtime"
 import { createSignal, For, Show } from "solid-js"
 import { Title } from "solid-meta"
 
 import AvatarItem from "../components/avatar-item"
 import Body from "../components/body"
 
-const itemTypes = [
+const itemTypes: string[] = [
   "/sprites/whole-armband.svg",
   "/sprites/whole-belt.svg",
   // '/sprites/whole-body.svg',
@@ -34,11 +35,11 @@ const itemTypes = [
   "/sprites/whole-wings.svg",
 ]
 
-function itemName(item) {
+function itemName(item: string): string {
   return item.slice(15, -4)
 }
 
-export default function Credits() {
+export default function Credits(): JSX.Element {
   const [selected, setSelected] = createSignal(0)
 
   return (

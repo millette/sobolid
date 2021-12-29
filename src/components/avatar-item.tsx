@@ -1,51 +1,54 @@
 // npm
+import type { JSX } from "solid-js/jsx-runtime"
 import { createSignal, createResource, Show } from "solid-js"
 
 // self
 import { parseIt } from "../utils/parse-it"
 import { theParts, addPart, removePart, hasPart } from "../utils/state"
 
-export default function AvatarItem(props) {
+export default function AvatarItem(props: {
+  partsFileName: string
+}): JSX.Element {
   const [name1, setName1] = createSignal(0)
   const [shirts] = createResource(props.partsFileName, parseIt) //  : Foo
 
-  function s1() {
+  function s1(): string {
     if (shirts()[name1()][1] > 1)
       return `${shirts()[name1()][0]}_1_of_${shirts()[name1()][1]}`
     return shirts()[name1()][0]
   }
 
-  function s2() {
+  function s2(): string {
     if (shirts()[name1()][1] > 1)
       return `${shirts()[name1()][0]}_2_of_${shirts()[name1()][1]}`
     return ""
   }
 
-  function s3() {
+  function s3(): string {
     if (shirts()[name1()][1] > 2)
       return `${shirts()[name1()][0]}_3_of_${shirts()[name1()][1]}`
     return ""
   }
 
-  function s4() {
+  function s4(): string {
     if (shirts()[name1()][1] > 3)
       return `${shirts()[name1()][0]}_4_of_${shirts()[name1()][1]}`
     return ""
   }
 
-  function s5() {
+  function s5(): string {
     if (shirts()[name1()][1] > 4)
       return `${shirts()[name1()][0]}_5_of_${shirts()[name1()][1]}`
     return ""
   }
 
-  function s6() {
+  function s6(): string {
     if (shirts()[name1()][1] > 5)
       return `${shirts()[name1()][0]}_6_of_${shirts()[name1()][1]}`
     return ""
   }
 
-  function next() {
+  function next(): void {
     if (shirts().length === 1) return
     if (name1() + 1 === shirts().length) {
       setName1(0)
@@ -54,7 +57,7 @@ export default function AvatarItem(props) {
     }
   }
 
-  function previous() {
+  function previous(): void {
     if (shirts().length === 1) return
     if (name1() === 0) {
       setName1(shirts().length - 1)
@@ -63,7 +66,7 @@ export default function AvatarItem(props) {
     }
   }
 
-  function woot() {
+  function woot(): { type: string; item: string } {
     const p = shirts()[name1()][0].split("#")
     return {
       type: p[0].slice(15, -4),
@@ -71,12 +74,12 @@ export default function AvatarItem(props) {
     }
   }
 
-  function punch(type, item) {
-    console.log("PUNCH", type, item, theParts())
+  function punch(type: string, item: string): void {
+    // console.log("PUNCH", type, item, theParts())
     addPart(type, item)
   }
 
-  function removeit(type) {
+  function removeit(type: string): void {
     removePart(type)
   }
 
