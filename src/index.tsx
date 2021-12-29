@@ -1,8 +1,10 @@
+// npm
 import "uno.css"
 import "@unocss/reset/tailwind.css"
-
 import { render } from "solid-js/web"
 import { Router } from "solid-app-router"
+
+// self
 import App from "./app"
 
 render(

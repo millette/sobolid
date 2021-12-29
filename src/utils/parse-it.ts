@@ -6,7 +6,7 @@ function isLayeredItem(item: string): { name: string; n: number } {
   return { name, n }
 }
 
-export async function parseIt(fn: string) {
+export async function parseIt(fn: string): Promise<Array<[string, number]>> {
   const res: Response = await fetch(fn)
   const txt: string = await res.text()
   const parser = new DOMParser()

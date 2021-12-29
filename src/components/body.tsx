@@ -1,5 +1,5 @@
 // npm
-import { JSX } from "solid-js/jsx-runtime"
+import type { JSX } from "solid-js/jsx-runtime"
 
 // self
 import AvatarItemV3 from "./avatar-item-v3"

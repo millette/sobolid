@@ -1,5 +1,5 @@
 // npm
-import { JSX } from "solid-js/jsx-runtime"
+import type { JSX } from "solid-js/jsx-runtime"
 import { createSignal, createResource, Show, For } from "solid-js"
 
 // self

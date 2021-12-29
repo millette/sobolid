@@ -1,6 +1,8 @@
+// npm
 import { lazy } from "solid-js"
 import type { RouteDefinition } from "solid-app-router"
 
+// self
 import Home from "./pages/home"
 import AboutData from "./pages/about.data"
 

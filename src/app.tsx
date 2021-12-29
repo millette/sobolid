@@ -1,5 +1,5 @@
 // npm
-import type { Component } from "solid-js"
+import type { JSX } from "solid-js/jsx-runtime"
 import { NavLink, useRoutes, useLocation } from "solid-app-router"
 import { MetaProvider, Title } from "solid-meta"
 
@@ -7,9 +7,9 @@ import { MetaProvider, Title } from "solid-meta"
 import { routes } from "./routes"
 import "./styles.css"
 
-const App: Component = () => {
+function App(): JSX.Element {
   const location = useLocation()
-  const Route = useRoutes(routes)
+  const Route: JSX.Element = useRoutes(routes)
 
   return (
     <MetaProvider>
