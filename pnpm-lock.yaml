@@ -1,6 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
+  "@solid-primitives/storage": ^1.0.10
   "@typescript-eslint/eslint-plugin": ^5.8.1
   "@typescript-eslint/parser": ^5.8.1
   "@unocss/preset-wind": 0.20.1
@@ -21,6 +22,7 @@ specifiers:
   vite-plugin-solid: 2.1.4
 
 dependencies:
+  "@solid-primitives/storage": 1.0.10_solid-js@1.2.6
   fast-glob: 3.2.7
   solid-app-router: 0.1.14_solid-js@1.2.6
   solid-js: 1.2.6
@@ -541,6 +543,17 @@ packages:
       }
     engines: { node: ">=6" }
     dev: true
+
+  /@solid-primitives/storage/1.0.10_solid-js@1.2.6:
+    resolution:
+      {
+        integrity: sha512-NKtFQfadoPELZ9lEUv8e56hmjoj7Go/hhcODVYqxLjU+251Zl5IehXnRU4C8q1HH6m8oS0LeF1HFUHOMWCo9Lg==,
+      }
+    peerDependencies:
+      solid-js: ^1.2.5
+    dependencies:
+      solid-js: 1.2.6
+    dev: false
 
   /@szmarczak/http-timer/1.1.2:
     resolution:
