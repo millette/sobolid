@@ -1,5 +1,5 @@
 // core
-import { readFileSync, writeFileSync } from "fs"
+import { readFileSync, writeFileSync } from "node:fs"
 
 // npm
 import fg from "fast-glob"
