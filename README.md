@@ -1,6 +1,6 @@
 ## WIP
 
-Oh well, the sprites need a revamp. Currently, scales are off when we add items to the body.
+Items can be added to the body, the layers are all there but in no specific order. That means if you add shoes, then socks, the socks will probably appear over the shoes. Multilayer items are a problem too since they're all added at once.
 
 ## Usage
 
