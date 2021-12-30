@@ -4,11 +4,7 @@ Items can be added to the body, the layers are all there but in no specific orde
 
 ## Usage
 
-Those templates dependencies are maintained via [pnpm](https://pnpm.io) via `pnpm up -Lri`.
-
-This is the reason you see a `pnpm-lock.yaml`. That being said, any package manager will work. This file can be safely be removed once you clone a template.
-
-```bash
+```sh
 $ pnpm install # or npm install or yarn install
 ```
 
