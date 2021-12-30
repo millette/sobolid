@@ -4,7 +4,6 @@ import { createSignal, createResource, Show } from "solid-js"
 
 // self
 import { parseIt } from "../utils/parse-it"
-// import { theParts, addPart, removePart, hasPart } from "../utils/state"
 import { addPart, removePart, hasPart } from "../utils/state"
 
 export default function AvatarItem(props: {
