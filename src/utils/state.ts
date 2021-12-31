@@ -5,14 +5,17 @@ import { createStorage } from "@solid-primitives/storage"
 // const [elstore, setElstore,  { remove, clear, toJSON }] = createStorage()
 const [, setElstore, { remove, toJSON }] = createStorage()
 
-const j = toJSON()
-const j2 = {}
-let r
-for (r in j) {
-  j2[r] = JSON.parse(j[r])
+function fromStore(): {} {
+  const j = toJSON()
+  const j2 = {}
+  let r
+  for (r in j) {
+    j2[r] = JSON.parse(j[r])
+  }
+  return j2
 }
 
-const [theParts, setParts] = createSignal(j2)
+const [theParts, setParts] = createSignal(fromStore())
 
 function addPart(type: string, item: string[]): void {
   setElstore(type, JSON.stringify(item))
