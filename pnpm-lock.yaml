@@ -9,7 +9,7 @@ specifiers:
   eslint-config-prettier: ^8.3.0
   fast-glob: ^3.2.7
   husky: ">=6"
-  lint-staged: 12.1.4
+  lint-staged: 12.1.5
   mrm: ^3.0.10
   prettier: ">=2"
   solid-app-router: 0.1.14
@@ -34,7 +34,7 @@ devDependencies:
   eslint: 8.5.0
   eslint-config-prettier: 8.3.0_eslint@8.5.0
   husky: 7.0.4
-  lint-staged: 12.1.4
+  lint-staged: 12.1.5
   mrm: 3.0.10
   prettier: 2.5.1
   typescript: 4.5.4
@@ -3102,10 +3102,10 @@ packages:
     engines: { node: ">=10" }
     dev: true
 
-  /lint-staged/12.1.4:
+  /lint-staged/12.1.5:
     resolution:
       {
-        integrity: sha512-RgDz9nsFsE0/5eL9Vat0AvCuk0+j5mEuzBIVfrRH5FRtt5wibYe8zTjZs2nuqLFrLAGQGYnj8+HJxolcj08i/A==,
+        integrity: sha512-WyKb+0sNKDTd1LwwAfTBPp0XmdaKkAOEbg4oHE4Kq2+oQVchg/VAcjVQtSqZih1izNsTURjc2EkhG/syRQUXdA==,
       }
     engines: { node: ^12.20.0 || ^14.13.1 || >=16.0.0 }
     hasBin: true
