@@ -33,7 +33,7 @@
     "fast-glob": "^3.2.7",
     "solid-app-router": "0.1.14",
     "solid-js": "1.2.6",
-    "solid-meta": "^0.27.2"
+    "solid-meta": "0.27.3"
   },
   "lint-staged": {
     "*.{js,css,md,ts,yaml,json,tsx}": "prettier --write"

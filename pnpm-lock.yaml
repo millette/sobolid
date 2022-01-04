@@ -14,7 +14,7 @@ specifiers:
   prettier: ">=2"
   solid-app-router: 0.1.14
   solid-js: 1.2.6
-  solid-meta: ^0.27.2
+  solid-meta: 0.27.3
   typescript: ^4.5.4
   unocss: 0.20.1
   vite: 2.7.10
@@ -24,7 +24,7 @@ dependencies:
   fast-glob: 3.2.7
   solid-app-router: 0.1.14_solid-js@1.2.6
   solid-js: 1.2.6
-  solid-meta: 0.27.2_solid-js@1.2.6
+  solid-meta: 0.27.3_solid-js@1.2.6
 
 devDependencies:
   "@typescript-eslint/eslint-plugin": 5.8.1_3a47348159e115370aa4cba56aba33b6
@@ -4254,10 +4254,10 @@ packages:
         integrity: sha512-NvPHJ5Vj5f+ZJWIioickrC55seovSkDtm5NzSpnoUk3z4tATv0STpy5iuGNEn51ZORUcwpZzrMAtOCGziXU1XA==,
       }
 
-  /solid-meta/0.27.2_solid-js@1.2.6:
+  /solid-meta/0.27.3_solid-js@1.2.6:
     resolution:
       {
-        integrity: sha512-t4rotsA99LMhiSI6C0pfN1fR8+bApl2ouOqIpOgxHtapJ+fgBIv7cVnI3nLMMzjiiML+vb83l9xes6/OLSCNtw==,
+        integrity: sha512-XaVv0EPkoPvufzUOIMn4yOzZFnJvQPVBlpZFLc9zTFTUnb+cq/zuoWr0Sa0fEntodfVPe5j6NfvXwGE6pHQo+w==,
       }
     peerDependencies:
       solid-js: ^1.0.0
