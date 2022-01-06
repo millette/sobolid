@@ -27,7 +27,7 @@
     "typescript": "^4.5.4",
     "unocss": "0.21.0",
     "vite": "2.7.10",
-    "vite-plugin-solid": "2.2.0"
+    "vite-plugin-solid": "2.2.1"
   },
   "dependencies": {
     "fast-glob": "^3.2.7",
