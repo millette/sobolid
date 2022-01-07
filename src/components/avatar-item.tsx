@@ -5,6 +5,8 @@ import { createSignal, createResource, Show } from "solid-js"
 // self
 import { parseIt } from "../utils/parse-it"
 import { addPart, removePart, hasPart } from "../utils/state"
+// import { getViewBox} from "../utils/viewbox"
+// viewBox={getViewBox("m", woot().type, woot().item.slice(1))}
 
 export default function AvatarItem(props: {
   partsFileName: string
@@ -86,11 +88,10 @@ export default function AvatarItem(props: {
     removePart(type)
   }
 
+  // console.log("viewBox", getViewBox("m", woot().type)) // , "lab"
+
   return (
-    <div
-      class="border-solid border-4 border-teal-600"
-      style="min-height: 300px"
-    >
+    <div class="border-solid border-4 border-teal-600">
       <Show when={!shirts.loading}>
         <div>
           <Show when={shirts().length > 1}>
@@ -108,7 +109,7 @@ export default function AvatarItem(props: {
             </ul>
           </Show>
 
-          <div style="height: 7rem">
+          <div>
             <p>
               Name: {woot().type}
               <Show when={hasPart(woot().type)}>
@@ -120,7 +121,11 @@ export default function AvatarItem(props: {
               Item: {woot().item} ({name1() + 1} of {shirts().length})
             </p>
           </div>
-          <svg class="bg-white" onClick={punch.bind(null, woot().type)}>
+          <svg
+            viewBox="0 0 560 560"
+            class="bg-white"
+            onClick={punch.bind(null, woot().type)}
+          >
             <Show when={s6()}>
               <use href={s6()}></use>
             </Show>
