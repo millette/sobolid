@@ -50,6 +50,7 @@ export default function AvatarItemV3(props: {
     setFullBody(full)
   }
 
+  /*
   createEffect(() =>
     console.log(
       "v3 layers",
@@ -57,6 +58,7 @@ export default function AvatarItemV3(props: {
       props.layers()
     )
   )
+  */
 
   function theItem(items, item) {
     // console.log()
@@ -95,12 +97,10 @@ export default function AvatarItemV3(props: {
           </ul>
           <p>Number of parts: {Object.keys(theParts()).length}</p>
 
-          <pre>{JSON.stringify(theParts(), null, 2)}</pre>
-
           <Show when={fullBody().length > 0} fallback="Pick a body type">
             <svg viewBox="0 0 560 560" class="bg-white">
               <For each={Object.keys(theParts())}>
-                {(items) => (
+                {(items: string) => (
                   <For each={theParts()[items]}>
                     {(item: string) => (
                       <Show when={underBody(items, item)}>
@@ -124,7 +124,7 @@ export default function AvatarItemV3(props: {
               <use href={`${props.partsFileName}#ihand_right`}></use>
 
               <For each={Object.keys(theParts())}>
-                {(items) => (
+                {(items: string) => (
                   <For each={theParts()[items]}>
                     {(item: string) => (
                       <Show when={overBody(items, item)}>
