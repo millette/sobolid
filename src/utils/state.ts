@@ -5,7 +5,8 @@ import { createStorage } from "@solid-primitives/storage"
 // const [elstore, setElstore,  { remove, clear, toJSON }] = createStorage()
 const [, setElstore, { remove, toJSON }] = createStorage()
 
-function fromStore(): {} {
+// TODO Fix type (Record..?)
+function fromStore(): Record<string, unknown> {
   const j = toJSON()
   const j2 = {}
   let r
