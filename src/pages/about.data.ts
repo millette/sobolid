@@ -1,3 +1,4 @@
+// npm
 import type { RouteDataFunc } from "solid-app-router"
 
 const AboutData: RouteDataFunc = () => {
