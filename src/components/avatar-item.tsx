@@ -1,6 +1,6 @@
 // npm
 import type { JSX } from "solid-js/jsx-runtime"
-import { createSignal, createResource, Show } from "solid-js"
+import { createEffect, createSignal, createResource, Show } from "solid-js"
 
 // self
 import { parseIt } from "../utils/parse-it"
@@ -9,10 +9,19 @@ import { addPart, removePart, hasPart } from "../utils/state"
 // viewBox={getViewBox("m", woot().type, woot().item.slice(1))}
 
 export default function AvatarItem(props: {
+  layers
   partsFileName: string
 }): JSX.Element {
   const [name1, setName1] = createSignal(0)
   const [shirts] = createResource(props.partsFileName, parseIt)
+
+  createEffect(() =>
+    console.log(
+      "v... layers",
+      props.layers.loading ? "Loading.." : "Ready",
+      props.layers()
+    )
+  )
 
   function s1(): string {
     if (shirts()[name1()][1] > 1)

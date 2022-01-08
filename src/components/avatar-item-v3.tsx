@@ -1,6 +1,6 @@
 // npm
 import type { JSX } from "solid-js/jsx-runtime"
-import { createSignal, createResource, Show, For } from "solid-js"
+import { createSignal, createResource, Show, For, createEffect } from "solid-js"
 
 // self
 import { theParts, removePart } from "../utils/state"
@@ -36,6 +36,7 @@ async function parseIt(fn: string): Promise<Array<[string, Array<string>]>> {
 }
 
 export default function AvatarItemV3(props: {
+  layers
   partsFileName: string
 }): JSX.Element {
   const [fullBody, setFullBody] = createSignal([])
@@ -49,9 +50,32 @@ export default function AvatarItemV3(props: {
     setFullBody(full)
   }
 
+  createEffect(() =>
+    console.log(
+      "v3 layers",
+      props.layers.loading ? "Loading.." : "Ready",
+      props.layers()
+    )
+  )
+
+  function theItem(items, item) {
+    // console.log()
+    return `${items}_${item.slice(21 + items.length)}`
+  }
+
+  function underBody(items, item) {
+    const x = theItem(items, item)
+    return props.layers().bodyBack.find((z) => z === x) !== undefined
+  }
+
+  function overBody(items, item) {
+    const x = theItem(items, item)
+    return props.layers().bodyFront.find((z) => z === x) !== undefined
+  }
+
   return (
     <div class="border-solid border-4 border-teal-600">
-      <Show when={!shirts.loading}>
+      <Show when={!shirts.loading && !props.layers.loading}>
         <div>
           <ul class="flex items-center">
             <For each={shirts()}>
@@ -71,8 +95,25 @@ export default function AvatarItemV3(props: {
           </ul>
           <p>Number of parts: {Object.keys(theParts()).length}</p>
 
+          <pre>{JSON.stringify(theParts(), null, 2)}</pre>
+
           <Show when={fullBody().length > 0} fallback="Pick a body type">
             <svg viewBox="0 0 560 560" class="bg-white">
+              <For each={Object.keys(theParts())}>
+                {(items) => (
+                  <For each={theParts()[items]}>
+                    {(item: string) => (
+                      <Show when={underBody(items, item)}>
+                        <use
+                          onClick={removePart.bind(null, items)}
+                          href={item}
+                        ></use>
+                      </Show>
+                    )}
+                  </For>
+                )}
+              </For>
+
               <For each={fullBody().reverse()}>
                 {(item) => <use href={`${props.partsFileName}#${item}`}></use>}
               </For>
@@ -86,10 +127,12 @@ export default function AvatarItemV3(props: {
                 {(items) => (
                   <For each={theParts()[items]}>
                     {(item: string) => (
-                      <use
-                        onClick={removePart.bind(null, items)}
-                        href={item}
-                      ></use>
+                      <Show when={overBody(items, item)}>
+                        <use
+                          onClick={removePart.bind(null, items)}
+                          href={item}
+                        ></use>
+                      </Show>
                     )}
                   </For>
                 )}

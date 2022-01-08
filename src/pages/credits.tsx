@@ -1,7 +1,9 @@
+// npm
 import type { JSX } from "solid-js/jsx-runtime"
-import { createSignal, For, Show } from "solid-js"
+import { createResource, createSignal, For, Show } from "solid-js"
 import { Title } from "solid-meta"
 
+// self
 import AvatarItem from "../components/avatar-item"
 import Body from "../components/body"
 
@@ -39,15 +41,27 @@ function itemName(item: string): string {
   return item.slice(15, -4)
 }
 
+async function tada(fn) {
+  const res = await fetch(fn)
+  const json = await res.json()
+  return json
+}
+
 export default function Credits(): JSX.Element {
   const [selected, setSelected] = createSignal(0)
+  const [layers] = createResource("/sprites/male-body_front_swaying.json", tada)
 
   return (
     <section class="bg-pink-100 text-gray-700 p-8">
       <Title>Credits page</Title>
       <h1 class="text-2xl font-bold">Credits</h1>
 
-      <Body />
+      <details>
+        <summary>PRE {layers.loading ? "loading..." : "ready"}</summary>
+        <pre>{JSON.stringify(layers(), null, 2)}</pre>
+      </details>
+
+      <Body layers={layers} />
 
       <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         <For each={itemTypes} fallback={<div>Loading...</div>}>
@@ -57,7 +71,7 @@ export default function Credits(): JSX.Element {
                 {itemName(item)}
               </button>
               <Show when={i() === selected()}>
-                <AvatarItem partsFileName={item} />
+                <AvatarItem layers={layers} partsFileName={item} />
               </Show>
             </div>
           )}
