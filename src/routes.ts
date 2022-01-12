@@ -6,18 +6,19 @@ import type { RouteDefinition } from "solid-app-router"
 import Home from "./pages/home"
 import AboutData from "./pages/about.data"
 
+const pathPrefix = "/sobolid"
 export const routes: RouteDefinition[] = [
   {
-    path: "/",
+    path: `${pathPrefix}/`,
     component: Home,
   },
   {
-    path: "/about",
+    path: `${pathPrefix}/about`,
     component: lazy(() => import("./pages/about")),
     data: AboutData,
   },
   {
-    path: "/credits",
+    path: `${pathPrefix}/credits`,
     component: lazy(() => import("./pages/credits")),
   },
   {
