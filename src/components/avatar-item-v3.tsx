@@ -1,6 +1,6 @@
 // npm
 import type { JSX } from "solid-js/jsx-runtime"
-import { createSignal, createResource, Show, For, createEffect } from "solid-js"
+import { createSignal, createResource, Show, For } from "solid-js"
 
 // self
 import { pickedBody, setBody, theParts, removePart } from "../utils/state"
