@@ -6,7 +6,6 @@ import type { RouteDefinition } from "solid-app-router"
 import Home from "./pages/home"
 import AboutData from "./pages/about.data"
 
-// const pathPrefix = "/sobolid"
 export const pathPrefix = "/sobolid"
 
 export const routes: RouteDefinition[] = [

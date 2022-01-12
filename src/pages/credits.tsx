@@ -6,6 +6,7 @@ import { Title } from "solid-meta"
 // self
 import AvatarItem from "../components/avatar-item"
 import Body from "../components/body"
+import { pathPrefix } from "../routes"
 
 const itemTypes: string[] = [
   "/sprites/whole-armband.svg",
@@ -49,7 +50,10 @@ async function tada(fn) {
 
 export default function Credits(): JSX.Element {
   const [selected, setSelected] = createSignal(0)
-  const [layers] = createResource("/sprites/male-body_front_swaying.json", tada)
+  const [layers] = createResource(
+    `${pathPrefix}/sprites/male-body_front_swaying.json`,
+    tada
+  )
 
   return (
     <section class="bg-pink-100 text-gray-700 p-8">

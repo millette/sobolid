@@ -4,6 +4,7 @@ import { createSignal, createResource, Show, For } from "solid-js"
 
 // self
 import { pickedBody, setBody, theParts, removePart } from "../utils/state"
+import { pathPrefix } from "../routes"
 
 function bodyParts(item: string): { name: string | undefined; more: string } {
   const parts: string[] = item.split("_")
@@ -14,7 +15,7 @@ function bodyParts(item: string): { name: string | undefined; more: string } {
 }
 
 async function parseIt(fn: string): Promise<Array<[string, Array<string>]>> {
-  const res: Response = await fetch(fn)
+  const res: Response = await fetch(`${pathPrefix}/${fn}`)
   const txt: string = await res.text()
   const parser = new DOMParser()
   const svgDoc: Document = parser.parseFromString(txt, "image/svg+xml")
