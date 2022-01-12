@@ -3,7 +3,7 @@ import type { JSX } from "solid-js/jsx-runtime"
 import { createSignal, createResource, Show, For, createEffect } from "solid-js"
 
 // self
-import { theParts, removePart } from "../utils/state"
+import { pickedBody, setBody, theParts, removePart } from "../utils/state"
 
 function bodyParts(item: string): { name: string | undefined; more: string } {
   const parts: string[] = item.split("_")
@@ -39,29 +39,18 @@ export default function AvatarItemV3(props: {
   layers
   partsFileName: string
 }): JSX.Element {
-  const [fullBody, setFullBody] = createSignal([])
+  const [fullBodyId, setFullBodyId] = createSignal(pickedBody())
   const [shirts] = createResource(props.partsFileName, parseIt)
 
-  function pickBodyType(a: string): void {
-    const [type, parts] = shirts()[a]
-    const full = parts.map((x) => {
+  function fullBody() {
+    setBody(fullBodyId())
+    const [type, parts] = shirts()[fullBodyId()]
+    return parts.map((x) => {
       return `${x}_${type}`
     })
-    setFullBody(full)
   }
 
-  /*
-  createEffect(() =>
-    console.log(
-      "v3 layers",
-      props.layers.loading ? "Loading.." : "Ready",
-      props.layers()
-    )
-  )
-  */
-
   function theItem(items, item) {
-    // console.log()
     return `${items}_${item.slice(21 + items.length)}`
   }
 
@@ -85,7 +74,7 @@ export default function AvatarItemV3(props: {
                 <Show when={item[0]}>
                   <li class="flex-1">
                     <button
-                      onClick={pickBodyType.bind(null, n())}
+                      onClick={setFullBodyId.bind(null, n())}
                       class="p-2 text-white bg-red-600 rounded-full"
                     >
                       {item[0]}
