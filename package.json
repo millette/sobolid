@@ -1,10 +1,10 @@
 {
   "name": "vite-template-solid",
   "version": "0.0.0",
-  "description": "",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "deploy": "gh-pages -d dist",
     "serve": "vite preview",
     "format": "prettier --loglevel warn --write \"**/*.{js,css,md,ts,yaml,json,tsx}\"",
     "posttest": "npm run format",
@@ -21,6 +21,7 @@
     "eslint": "8.6.0",
     "eslint-config-prettier": "^8.3.0",
     "fast-glob": "3.2.10",
+    "gh-pages": "^3.2.3",
     "husky": ">=6",
     "lint-staged": "12.1.7",
     "mrm": "^3.0.10",
