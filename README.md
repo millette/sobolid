@@ -37,3 +37,11 @@ Preview with `npm run serve` and visiting http://localhost:5000 (vs port 3000 fo
 ## Deployment
 
 You can deploy the `dist` folder to any static host provider (netlify, surge, now, etc.)
+
+## Code license
+
+I wouldn't depend on this code if I were you! It's non-free. Have a look at the original project at https://github.com/ubik23/charactercreator for stable code base.
+
+## Art license
+
+The art is licensed <a href='https://creativecommons.org/licenses/by-nc/2.0/' target='_blank'>cc-by-nc</a>. You are free to use for non-commercial products as long as you credit the site. If you want to use characters in a commercial product, you can obtain a license by visiting our <a href='https://www.patreon.com/charactercreator' target='_blank'>Patreon page</a> and pledging $5 a month or more.
