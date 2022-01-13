@@ -52,7 +52,6 @@ export default function AvatarItemV3(props: {
   }
 
   function theItem(items, item) {
-    console.log("theItem", `${items}_${item.slice(20 + items.length)}`)
     return `${items}_${item.slice(20 + items.length)}`
   }
 
@@ -63,12 +62,6 @@ export default function AvatarItemV3(props: {
 
   function overBody(items, item) {
     const x = theItem(items, item)
-    console.log(
-      "OVER",
-      items,
-      item,
-      props.layers().bodyFront.find((z) => z === x) !== undefined
-    )
     return props.layers().bodyFront.find((z) => z === x) !== undefined
   }
 

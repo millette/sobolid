@@ -37,7 +37,6 @@ const itemTypes: string[] = [
 ]
 
 function itemName(item: string): string {
-  console.log("ITEMNAME", item)
   return item.slice(14, -4)
 }
 
@@ -49,10 +48,6 @@ async function tada(fn) {
 
 export default function Credits(): JSX.Element {
   const [selected, setSelected] = createSignal(0)
-  console.log(
-    "LAYERS path",
-    `${pathPrefix}sprites/male-body_front_swaying.json`
-  )
   const [layers] = createResource(
     `${pathPrefix}sprites/male-body_front_swaying.json`,
     tada

@@ -2,10 +2,7 @@
 import { createSignal } from "solid-js"
 import { createStorage } from "@solid-primitives/storage"
 
-const [elStore, setElstore, { clear, remove, toJSON }] = createStorage()
-
-// clear()
-// console.log("CLEARED")
+const [elStore, setElstore, { remove, toJSON }] = createStorage()
 
 // TODO Fix type (Record..?)
 function fromStore(): Record<string, unknown> {
@@ -15,7 +12,6 @@ function fromStore(): Record<string, unknown> {
   for (r in j) {
     j2[r] = JSON.parse(j[r])
   }
-  console.log("J2", j2)
   return j2
 }
 
