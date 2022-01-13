@@ -10,16 +10,19 @@ export const pathPrefix = "/sobolid"
 
 export const routes: RouteDefinition[] = [
   {
-    path: `${pathPrefix}/`,
+    // path: `${pathPrefix}/`,
+    path: "/",
     component: Home,
   },
   {
-    path: `${pathPrefix}/about`,
+    // path: `${pathPrefix}/about`,
+    path: "/about",
     component: lazy(() => import("./pages/about")),
     data: AboutData,
   },
   {
-    path: `${pathPrefix}/credits`,
+    // path: `${pathPrefix}/credits`,
+    path: "/credits",
     component: lazy(() => import("./pages/credits")),
   },
   {

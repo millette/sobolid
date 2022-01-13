@@ -9,7 +9,7 @@ import "./styles.css"
 
 function App(): JSX.Element {
   const location = useLocation()
-  const Route: JSX.Element = useRoutes(routes)
+  const Route: JSX.Element = useRoutes(routes, pathPrefix)
 
   return (
     <MetaProvider>
