@@ -2,7 +2,7 @@
 import { createSignal } from "solid-js"
 import { createStorage } from "@solid-primitives/storage"
 
-const [elStore, setElstore, { remove, toJSON }] = createStorage()
+const [elStore, setElstore, { clear, remove, toJSON }] = createStorage()
 
 // TODO Fix type (Record..?)
 function fromStore(): Record<string, unknown> {
@@ -43,4 +43,4 @@ function setBody(bodyType) {
   setElstore("_bodyType", bodyType)
 }
 
-export { pickedBody, setBody, theParts, addPart, removePart, hasPart }
+export { clear, pickedBody, setBody, theParts, addPart, removePart, hasPart }

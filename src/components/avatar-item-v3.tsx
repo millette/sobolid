@@ -1,9 +1,15 @@
 // npm
 import type { JSX } from "solid-js/jsx-runtime"
-import { createSignal, createResource, Show, For } from "solid-js"
+import { createSignal, createResource, Show, For, createEffect } from "solid-js"
 
 // self
-import { pickedBody, setBody, theParts, removePart } from "../utils/state"
+import {
+  clear,
+  pickedBody,
+  setBody,
+  theParts,
+  removePart,
+} from "../utils/state"
 import { pathPrefix } from "../routes"
 
 function bodyParts(item: string): { name: string | undefined; more: string } {
@@ -43,8 +49,11 @@ export default function AvatarItemV3(props: {
   const [fullBodyId, setFullBodyId] = createSignal(pickedBody())
   const [shirts] = createResource(props.partsFileName, parseIt)
 
-  function fullBody() {
+  createEffect(() => {
     setBody(fullBodyId())
+  })
+
+  function fullBody() {
     const [type, parts] = shirts()[fullBodyId()]
     return parts.map((x) => {
       return `${x}_${type}`
@@ -63,6 +72,13 @@ export default function AvatarItemV3(props: {
   function overBody(items, item) {
     const x = theItem(items, item)
     return props.layers().bodyFront.find((z) => z === x) !== undefined
+  }
+
+  function clearChar() {
+    console.log("CLEAR")
+    clear()
+    setFullBodyId(0)
+    window.location = window.location + "?cleared"
   }
 
   return (
@@ -85,7 +101,15 @@ export default function AvatarItemV3(props: {
               )}
             </For>
           </ul>
-          <p>Number of parts: {Object.keys(theParts()).length - 1}</p>
+          <p>
+            Number of parts: {Object.keys(theParts()).length - 1}
+            <Show when={Object.keys(theParts()).length - 1}>
+              {" "}
+              <button class="p-3 bg-red-600 text-white-300" onClick={clearChar}>
+                RESET
+              </button>
+            </Show>
+          </p>
 
           <Show when={fullBody().length > 0} fallback="Pick a body type">
             <svg viewBox="0 0 560 560" class="bg-white">
