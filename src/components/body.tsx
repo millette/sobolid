@@ -8,7 +8,7 @@ export default function Body(props: { layers }): JSX.Element {
   return (
     <AvatarItemV3
       layers={props.layers}
-      partsFileName="/sprites/whole-body.svg"
+      partsFileName="sprites/whole-body.svg"
     />
   )
 }

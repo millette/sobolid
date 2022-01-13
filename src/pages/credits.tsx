@@ -9,37 +9,36 @@ import Body from "../components/body"
 import { pathPrefix } from "../routes"
 
 const itemTypes: string[] = [
-  "/sprites/whole-armband.svg",
-  "/sprites/whole-belt.svg",
-  // '/sprites/whole-body.svg',
-  "/sprites/whole-button.svg",
-  "/sprites/whole-cloak.svg",
-  "/sprites/whole-coat.svg",
-  "/sprites/whole-gloves.svg",
-  "/sprites/whole-holster.svg",
-  "/sprites/whole-jacket.svg",
-  "/sprites/whole-kneepads.svg",
-  "/sprites/whole-necklace.svg",
-  "/sprites/whole-pants.svg",
-  "/sprites/whole-pet.svg",
-  "/sprites/whole-scarf.svg",
-  "/sprites/whole-scar.svg",
-  "/sprites/whole-shirt.svg",
-  "/sprites/whole-shoes.svg",
-  "/sprites/whole-shoulderpads.svg",
-  "/sprites/whole-socks.svg",
-  "/sprites/whole-suit.svg",
-  "/sprites/whole-tatoo.svg",
-  "/sprites/whole-tie.svg",
-  "/sprites/whole-underwear.svg",
-  // '/sprites/whole-vest-orig.svg',
-  "/sprites/whole-vest.svg",
-  "/sprites/whole-watch.svg",
-  "/sprites/whole-wings.svg",
+  "sprites/whole-armband.svg",
+  "sprites/whole-belt.svg",
+  "sprites/whole-button.svg",
+  "sprites/whole-cloak.svg",
+  "sprites/whole-coat.svg",
+  "sprites/whole-gloves.svg",
+  "sprites/whole-holster.svg",
+  "sprites/whole-jacket.svg",
+  "sprites/whole-kneepads.svg",
+  "sprites/whole-necklace.svg",
+  "sprites/whole-pants.svg",
+  "sprites/whole-pet.svg",
+  "sprites/whole-scarf.svg",
+  "sprites/whole-scar.svg",
+  "sprites/whole-shirt.svg",
+  "sprites/whole-shoes.svg",
+  "sprites/whole-shoulderpads.svg",
+  "sprites/whole-socks.svg",
+  "sprites/whole-suit.svg",
+  "sprites/whole-tatoo.svg",
+  "sprites/whole-tie.svg",
+  "sprites/whole-underwear.svg",
+  "sprites/whole-vest.svg",
+  "sprites/whole-watch.svg",
+  "sprites/whole-wings.svg",
 ]
 
 function itemName(item: string): string {
-  return item.slice(15, -4)
+  console.log("ITEMNAME", item)
+  return item.slice(14, -4)
 }
 
 async function tada(fn) {
@@ -50,8 +49,12 @@ async function tada(fn) {
 
 export default function Credits(): JSX.Element {
   const [selected, setSelected] = createSignal(0)
+  console.log(
+    "LAYERS path",
+    `${pathPrefix}sprites/male-body_front_swaying.json`
+  )
   const [layers] = createResource(
-    `${pathPrefix}/sprites/male-body_front_swaying.json`,
+    `${pathPrefix}sprites/male-body_front_swaying.json`,
     tada
   )
 

@@ -19,7 +19,7 @@ function App(): JSX.Element {
           <li class="py-2 px-4">
             <NavLink
               end
-              href={`${pathPrefix}/`}
+              href={`${pathPrefix}`}
               class="no-underline hover:underline"
             >
               Home
@@ -27,7 +27,7 @@ function App(): JSX.Element {
           </li>
           <li class="py-2 px-4">
             <NavLink
-              href={`${pathPrefix}/about`}
+              href={`${pathPrefix}about`}
               class="no-underline hover:underline"
             >
               About
@@ -35,7 +35,7 @@ function App(): JSX.Element {
           </li>
           <li class="py-2 px-4">
             <NavLink
-              href={`${pathPrefix}/credits`}
+              href={`${pathPrefix}credits`}
               class="no-underline hover:underline"
             >
               Credits
@@ -43,7 +43,7 @@ function App(): JSX.Element {
           </li>
           <li class="py-2 px-4">
             <NavLink
-              href={`${pathPrefix}/error`}
+              href={`${pathPrefix}error`}
               class="no-underline hover:underline"
             >
               Error

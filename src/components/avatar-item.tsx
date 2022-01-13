@@ -1,13 +1,11 @@
 // npm
 import type { JSX } from "solid-js/jsx-runtime"
-import { createEffect, createSignal, createResource, Show } from "solid-js"
+import { createSignal, createResource, Show } from "solid-js"
 
 // self
 import { parseIt } from "../utils/parse-it"
 import { addPart, removePart, hasPart } from "../utils/state"
 import { pathPrefix } from "../routes"
-// import { getViewBox} from "../utils/viewbox"
-// viewBox={getViewBox("m", woot().type, woot().item.slice(1))}
 
 export default function AvatarItem(props: {
   layers
@@ -73,7 +71,7 @@ export default function AvatarItem(props: {
   function woot(): { type: string; item: string } {
     const p = shirts()[name1()][0].split("#")
     return {
-      type: p[0].slice(15, -4),
+      type: p[0].slice(14, -4),
       item: p[1],
     }
   }

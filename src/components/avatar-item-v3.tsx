@@ -15,7 +15,7 @@ function bodyParts(item: string): { name: string | undefined; more: string } {
 }
 
 async function parseIt(fn: string): Promise<Array<[string, Array<string>]>> {
-  const res: Response = await fetch(`${pathPrefix}/${fn}`)
+  const res: Response = await fetch(`${pathPrefix}${fn}`)
   const txt: string = await res.text()
   const parser = new DOMParser()
   const svgDoc: Document = parser.parseFromString(txt, "image/svg+xml")
@@ -52,7 +52,8 @@ export default function AvatarItemV3(props: {
   }
 
   function theItem(items, item) {
-    return `${items}_${item.slice(21 + items.length)}`
+    console.log("theItem", `${items}_${item.slice(20 + items.length)}`)
+    return `${items}_${item.slice(20 + items.length)}`
   }
 
   function underBody(items, item) {
@@ -62,6 +63,12 @@ export default function AvatarItemV3(props: {
 
   function overBody(items, item) {
     const x = theItem(items, item)
+    console.log(
+      "OVER",
+      items,
+      item,
+      props.layers().bodyFront.find((z) => z === x) !== undefined
+    )
     return props.layers().bodyFront.find((z) => z === x) !== undefined
   }
 
@@ -85,7 +92,7 @@ export default function AvatarItemV3(props: {
               )}
             </For>
           </ul>
-          <p>Number of parts: {Object.keys(theParts()).length}</p>
+          <p>Number of parts: {Object.keys(theParts()).length - 1}</p>
 
           <Show when={fullBody().length > 0} fallback="Pick a body type">
             <svg viewBox="0 0 560 560" class="bg-white">
