@@ -16,66 +16,39 @@ export default function AvatarItem(props: {
   const [name1, setName1] = createSignal(0)
   const [shirts] = createResource(props.partsFileName, parseIt)
 
-  createEffect(() =>
-    console.log(
-      "v... layers",
-      props.layers.loading ? "Loading.." : "Ready",
-      props.layers()
-    )
-  )
-
   function s1(): string {
-    console.log("S1")
     if (shirts()[name1()][1] > 1)
       return `${shirts()[name1()][0]}_1_of_${shirts()[name1()][1]}`
-    // return `${pathPrefix}${shirts()[name1()][0]}_1_of_${shirts()[name1()][1]}`
-    console.log("S1 NO LAYERS")
     return shirts()[name1()][0]
-    // return pathPrefix + shirts()[name1()][0]
   }
 
   function s2(): string {
-    console.log("S2")
     if (shirts()[name1()][1] > 1)
       return `${shirts()[name1()][0]}_2_of_${shirts()[name1()][1]}`
-    // return `${pathPrefix}${shirts()[name1()][0]}_2_of_${shirts()[name1()][1]}`
-    console.log("NOT S2")
     return ""
   }
 
   function s3(): string {
-    console.log("S3")
     if (shirts()[name1()][1] > 2)
       return `${shirts()[name1()][0]}_3_of_${shirts()[name1()][1]}`
-    // return `${pathPrefix}${shirts()[name1()][0]}_3_of_${shirts()[name1()][1]}`
-    console.log("NOT S3")
     return ""
   }
 
   function s4(): string {
-    console.log("S4")
     if (shirts()[name1()][1] > 3)
       return `${shirts()[name1()][0]}_4_of_${shirts()[name1()][1]}`
-    // return `${pathPrefix}${shirts()[name1()][0]}_4_of_${shirts()[name1()][1]}`
-    console.log("NOT S4")
     return ""
   }
 
   function s5(): string {
-    console.log("S5")
     if (shirts()[name1()][1] > 4)
       return `${shirts()[name1()][0]}_5_of_${shirts()[name1()][1]}`
-    // return `${pathPrefix}${shirts()[name1()][0]}_5_of_${shirts()[name1()][1]}`
-    console.log("NOT S5")
     return ""
   }
 
   function s6(): string {
-    console.log("S6")
     if (shirts()[name1()][1] > 5)
       return `${shirts()[name1()][0]}_6_of_${shirts()[name1()][1]}`
-    // return `${pathPrefix}${shirts()[name1()][0]}_6_of_${shirts()[name1()][1]}`
-    console.log("NOT S6")
     return ""
   }
 
@@ -105,22 +78,13 @@ export default function AvatarItem(props: {
     }
   }
 
-  // function punch(type: string, item: string): void {
   function punch(type: string): void {
-    // console.log("PUNCH", type, item, shirts())
-    // console.log("PUNCH-s1-6", s1(), s2(), s3(), s4(), s5(), s6())
-    // addPart(type, item)
-    const thePunch = [s1(), s2(), s3(), s4(), s5(), s6()].filter(Boolean)
-    console.log("punch", type, thePunch)
-    addPart(type, thePunch)
+    addPart(type, [s1(), s2(), s3(), s4(), s5(), s6()].filter(Boolean))
   }
 
   function removeit(type: string): void {
-    console.log("REMOVE", type)
     removePart(type)
   }
-
-  // console.log("viewBox", getViewBox("m", woot().type)) // , "lab"
 
   return (
     <div class="border-solid border-4 border-teal-600">

@@ -56,16 +56,12 @@ export default function AvatarItemV3(props: {
   }
 
   function underBody(items, item) {
-    console.log("UNDER", items, item)
     const x = theItem(items, item)
-    console.log("UNDER-x", x)
     return props.layers().bodyBack.find((z) => z === x) !== undefined
   }
 
   function overBody(items, item) {
-    console.log("OVER", items, item)
     const x = theItem(items, item)
-    console.log("OVER-x", x)
     return props.layers().bodyFront.find((z) => z === x) !== undefined
   }
 

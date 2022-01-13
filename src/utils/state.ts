@@ -2,10 +2,7 @@
 import { createSignal } from "solid-js"
 import { createStorage } from "@solid-primitives/storage"
 
-const [elStore, setElstore, { clear, remove, toJSON }] = createStorage()
-
-clear()
-console.log("CLEAR")
+const [elStore, setElstore, { remove, toJSON }] = createStorage()
 
 // TODO Fix type (Record..?)
 function fromStore(): Record<string, unknown> {
