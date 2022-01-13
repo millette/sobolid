@@ -56,12 +56,16 @@ export default function AvatarItemV3(props: {
   }
 
   function underBody(items, item) {
+    console.log("UNDER", items, item)
     const x = theItem(items, item)
+    console.log("UNDER-x", x)
     return props.layers().bodyBack.find((z) => z === x) !== undefined
   }
 
   function overBody(items, item) {
+    console.log("OVER", items, item)
     const x = theItem(items, item)
+    console.log("OVER-x", x)
     return props.layers().bodyFront.find((z) => z === x) !== undefined
   }
 
@@ -96,7 +100,7 @@ export default function AvatarItemV3(props: {
                       <Show when={underBody(items, item)}>
                         <use
                           onClick={removePart.bind(null, items)}
-                          href={item}
+                          href={`${pathPrefix}${item}`}
                         ></use>
                       </Show>
                     )}
@@ -105,13 +109,25 @@ export default function AvatarItemV3(props: {
               </For>
 
               <For each={fullBody().reverse()}>
-                {(item) => <use href={`${props.partsFileName}#${item}`}></use>}
+                {(item) => (
+                  <use
+                    href={`${pathPrefix}${props.partsFileName}#${item}`}
+                  ></use>
+                )}
               </For>
 
-              <use href={`${props.partsFileName}#ifoot_left`}></use>
-              <use href={`${props.partsFileName}#ifoot_right`}></use>
-              <use href={`${props.partsFileName}#ihand_left`}></use>
-              <use href={`${props.partsFileName}#ihand_right`}></use>
+              <use
+                href={`${pathPrefix}${props.partsFileName}#ifoot_left`}
+              ></use>
+              <use
+                href={`${pathPrefix}${props.partsFileName}#ifoot_right`}
+              ></use>
+              <use
+                href={`${pathPrefix}${props.partsFileName}#ihand_left`}
+              ></use>
+              <use
+                href={`${pathPrefix}${props.partsFileName}#ihand_right`}
+              ></use>
 
               <For each={Object.keys(theParts())}>
                 {(items: string) => (
@@ -120,7 +136,7 @@ export default function AvatarItemV3(props: {
                       <Show when={overBody(items, item)}>
                         <use
                           onClick={removePart.bind(null, items)}
-                          href={item}
+                          href={`${pathPrefix}${item}`}
                         ></use>
                       </Show>
                     )}

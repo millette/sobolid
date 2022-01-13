@@ -5,6 +5,7 @@ import { createEffect, createSignal, createResource, Show } from "solid-js"
 // self
 import { parseIt } from "../utils/parse-it"
 import { addPart, removePart, hasPart } from "../utils/state"
+import { pathPrefix } from "../routes"
 // import { getViewBox} from "../utils/viewbox"
 // viewBox={getViewBox("m", woot().type, woot().item.slice(1))}
 
@@ -24,38 +25,57 @@ export default function AvatarItem(props: {
   )
 
   function s1(): string {
+    console.log("S1")
     if (shirts()[name1()][1] > 1)
       return `${shirts()[name1()][0]}_1_of_${shirts()[name1()][1]}`
+    // return `${pathPrefix}${shirts()[name1()][0]}_1_of_${shirts()[name1()][1]}`
+    console.log("S1 NO LAYERS")
     return shirts()[name1()][0]
+    // return pathPrefix + shirts()[name1()][0]
   }
 
   function s2(): string {
+    console.log("S2")
     if (shirts()[name1()][1] > 1)
       return `${shirts()[name1()][0]}_2_of_${shirts()[name1()][1]}`
+    // return `${pathPrefix}${shirts()[name1()][0]}_2_of_${shirts()[name1()][1]}`
+    console.log("NOT S2")
     return ""
   }
 
   function s3(): string {
+    console.log("S3")
     if (shirts()[name1()][1] > 2)
       return `${shirts()[name1()][0]}_3_of_${shirts()[name1()][1]}`
+    // return `${pathPrefix}${shirts()[name1()][0]}_3_of_${shirts()[name1()][1]}`
+    console.log("NOT S3")
     return ""
   }
 
   function s4(): string {
+    console.log("S4")
     if (shirts()[name1()][1] > 3)
       return `${shirts()[name1()][0]}_4_of_${shirts()[name1()][1]}`
+    // return `${pathPrefix}${shirts()[name1()][0]}_4_of_${shirts()[name1()][1]}`
+    console.log("NOT S4")
     return ""
   }
 
   function s5(): string {
+    console.log("S5")
     if (shirts()[name1()][1] > 4)
       return `${shirts()[name1()][0]}_5_of_${shirts()[name1()][1]}`
+    // return `${pathPrefix}${shirts()[name1()][0]}_5_of_${shirts()[name1()][1]}`
+    console.log("NOT S5")
     return ""
   }
 
   function s6(): string {
+    console.log("S6")
     if (shirts()[name1()][1] > 5)
       return `${shirts()[name1()][0]}_6_of_${shirts()[name1()][1]}`
+    // return `${pathPrefix}${shirts()[name1()][0]}_6_of_${shirts()[name1()][1]}`
+    console.log("NOT S6")
     return ""
   }
 
@@ -90,10 +110,13 @@ export default function AvatarItem(props: {
     // console.log("PUNCH", type, item, shirts())
     // console.log("PUNCH-s1-6", s1(), s2(), s3(), s4(), s5(), s6())
     // addPart(type, item)
-    addPart(type, [s1(), s2(), s3(), s4(), s5(), s6()].filter(Boolean))
+    const thePunch = [s1(), s2(), s3(), s4(), s5(), s6()].filter(Boolean)
+    console.log("punch", type, thePunch)
+    addPart(type, thePunch)
   }
 
   function removeit(type: string): void {
+    console.log("REMOVE", type)
     removePart(type)
   }
 
@@ -136,21 +159,21 @@ export default function AvatarItem(props: {
             onClick={punch.bind(null, woot().type)}
           >
             <Show when={s6()}>
-              <use href={s6()}></use>
+              <use href={`${pathPrefix}${s6()}`}></use>
             </Show>
             <Show when={s5()}>
-              <use href={s5()}></use>
+              <use href={`${pathPrefix}${s5()}`}></use>
             </Show>
             <Show when={s4()}>
-              <use href={s4()}></use>
+              <use href={`${pathPrefix}${s4()}`}></use>
             </Show>
             <Show when={s3()}>
-              <use href={s3()}></use>
+              <use href={`${pathPrefix}${s3()}`}></use>
             </Show>
             <Show when={s2()}>
-              <use href={s2()}></use>
+              <use href={`${pathPrefix}${s2()}`}></use>
             </Show>
-            <use href={s1()}></use>
+            <use href={`${pathPrefix}${s1()}`}></use>
           </svg>
         </div>
       </Show>
