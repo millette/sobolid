@@ -8,7 +8,7 @@ specifiers:
   "@unocss/reset": 0.22.2
   eslint: 8.6.0
   eslint-config-prettier: ^8.3.0
-  fast-glob: 3.2.10
+  fast-glob: 3.2.11
   gh-pages: ^3.2.3
   husky: ">=6"
   lint-staged: 12.1.7
@@ -35,7 +35,7 @@ devDependencies:
   "@unocss/reset": 0.22.2
   eslint: 8.6.0
   eslint-config-prettier: 8.3.0_eslint@8.6.0
-  fast-glob: 3.2.10
+  fast-glob: 3.2.11
   gh-pages: 3.2.3
   husky: 7.0.4
   lint-staged: 12.1.7
@@ -772,7 +772,7 @@ packages:
       chokidar: 3.5.2
       colorette: 2.0.16
       consola: 2.15.3
-      fast-glob: 3.2.10
+      fast-glob: 3.2.11
       pathe: 0.2.0
     dev: true
 
@@ -2308,10 +2308,10 @@ packages:
       }
     dev: true
 
-  /fast-glob/3.2.10:
+  /fast-glob/3.2.11:
     resolution:
       {
-        integrity: sha512-s9nFhFnvR63wls6/kM88kQqDhMu0AfdjqouE2l5GVQPbqLgyFjjU5ry/r2yKsJxpb9Py1EYNqieFrmMaX4v++A==,
+        integrity: sha512-xrO3+1bxSo3ZVHAnqzyuewYT6aMFHRAd4Kcs92MAonjwQZLsK9d0SF1IyQ3k5PoirxTW0Oe/RqFgMQ6TcNE5Ew==,
       }
     engines: { node: ">=8.6.0" }
     dependencies:
@@ -2660,7 +2660,7 @@ packages:
     dependencies:
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.10
+      fast-glob: 3.2.11
       ignore: 5.2.0
       merge2: 1.4.1
       slash: 3.0.0
