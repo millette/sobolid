@@ -11,9 +11,6 @@ function fromStore(): Record<string, string[]> {
   for (r in j) {
     if (r !== "_bodyType") j2[r] = JSON.parse(j[r])
   }
-  console.log("J2")
-  console.log(typeof j2)
-  console.log(j2)
   return j2
 }
 
