@@ -6,8 +6,7 @@ import type { RouteDefinition } from "solid-app-router"
 import Home from "./pages/home"
 import AboutData from "./pages/about.data"
 
-// export const pathPrefix = "/sobolid/"
-export const pathPrefix = "/"
+export const pathPrefix = import.meta.env.VITE_PATHPREFIX || "/"
 
 export const routes: RouteDefinition[] = [
   {

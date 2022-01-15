@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "deploy": "gh-pages -d dist",
+    "deploy": "VITE_PATHPREFIX=/sobolid/ vite build && gh-pages -d dist",
     "serve": "vite preview",
     "format": "prettier --loglevel warn --write \"**/*.{js,css,md,ts,yaml,json,tsx}\"",
     "posttest": "npm run format",
