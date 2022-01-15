@@ -6,7 +6,7 @@
     "build": "vite build",
     "deploy": "VITE_PATHPREFIX=/sobolid/ vite build && gh-pages -d dist",
     "serve": "vite preview",
-    "format": "prettier --loglevel warn --write \"**/*.{js,css,md,ts,yaml,json,tsx}\"",
+    "format": "prettier --loglevel warn --write \"**/*.{js,css,md,ts,yaml,json,tsx,html}\"",
     "posttest": "npm run format",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "prepare": "husky install"
@@ -38,6 +38,6 @@
     "solid-meta": "0.27.3"
   },
   "lint-staged": {
-    "*.{js,css,md,ts,yaml,json,tsx}": "prettier --write"
+    "*.{js,css,md,ts,yaml,json,tsx,html}": "prettier --write"
   }
 }
