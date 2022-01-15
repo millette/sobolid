@@ -78,7 +78,8 @@ export default function AvatarItemV3(props: {
     console.log("CLEAR")
     clear()
     setFullBodyId(0)
-    window.location = window.location + "?cleared"
+    // FIXME: better reset/reload
+    window.location.href = window.location.href + "?cleared"
   }
 
   return (
