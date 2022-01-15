@@ -103,8 +103,8 @@ export default function AvatarItemV3(props: {
             </For>
           </ul>
           <p>
-            Number of parts: {Object.keys(theParts()).length - 1}
-            <Show when={Object.keys(theParts()).length - 1}>
+            Number of parts: {Object.keys(theParts()).length}
+            <Show when={Object.keys(theParts()).length}>
               {" "}
               <button class="p-3 bg-red-600 text-white-300" onClick={clearChar}>
                 RESET

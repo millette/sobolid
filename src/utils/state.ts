@@ -4,18 +4,20 @@ import { createStorage } from "@solid-primitives/storage"
 
 const [elStore, setElstore, { clear, remove, toJSON }] = createStorage()
 
-// TODO Fix type (Record..?)
-function fromStore(): Record<string, unknown> {
+function fromStore(): Record<string, string[]> {
   const j = toJSON()
   const j2 = {}
   let r
   for (r in j) {
-    j2[r] = JSON.parse(j[r])
+    if (r !== "_bodyType") j2[r] = JSON.parse(j[r])
   }
+  console.log("J2")
+  console.log(typeof j2)
+  console.log(j2)
   return j2
 }
 
-const [theParts, setParts] = createSignal(fromStore())
+const [theParts, setParts] = createSignal<Record<string, string[]>>(fromStore())
 
 function addPart(type: string, item: string[]): void {
   setElstore(type, JSON.stringify(item))
