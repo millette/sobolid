@@ -1,12 +1,25 @@
 // npm
 import type { JSX } from "solid-js/jsx-runtime"
-import { createResource, createSignal, For, Show } from "solid-js"
+import { createResource, createSignal, For, Show, Suspense } from "solid-js"
 import { Title } from "solid-meta"
 
 // self
 import AvatarItem from "../components/avatar-item"
 import Body from "../components/body"
 import { pathPrefix } from "../routes"
+
+async function hv() {
+  if (import.meta.env.MODE !== "production") return import.meta.env.MODE
+  const res = await fetch("/manifest.json")
+  const json = res.json()
+  const msgUint8 = new TextEncoder().encode(json) // encode comme (utf-8) Uint8Array
+  const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8) // fait le condensé
+  const hashArray = Array.from(new Uint8Array(hashBuffer)) // convertit le buffer en tableau d'octet
+  const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("") // convertit le tableau en chaîne hexadélimale
+  return "v" + hashHex.slice(0, 10)
+}
+
+const [hashedVersion] = createResource(`${pathPrefix}manifst.json`, hv)
 
 const itemTypes: string[] = [
   "sprites/whole-armband.svg",
@@ -55,7 +68,10 @@ export default function Credits(): JSX.Element {
 
   return (
     <section class="bg-pink-100 text-gray-700 p-8">
-      <Title>Credits page</Title>
+      <Title>
+        Credits page
+        <Suspense> ({hashedVersion()})</Suspense>
+      </Title>
       <h1 class="text-2xl font-bold">Credits</h1>
 
       <details>
