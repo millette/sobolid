@@ -39,5 +39,11 @@
   },
   "lint-staged": {
     "*.{js,css,md,ts,yaml,json,tsx,html}": "prettier --write"
+  },
+  "pnpm": {
+    "overrides": {
+      "ansi-regex@>2.1.1 <5.0.1": ">=5.0.1",
+      "follow-redirects@<1.14.7": ">=1.14.7"
+    }
   }
 }
