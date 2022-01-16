@@ -13,6 +13,7 @@ async function hv() {
   const res = await fetch("/manifest.json")
   const json = await res.json()
   const msgUint8 = new TextEncoder().encode(json) // encode comme (utf-8) Uint8Array
+  if (!(crypto && crypto.subtle && crypto.subtle.digest)) return "v.unknown"
   const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8) // fait le condensé
   const hashArray = Array.from(new Uint8Array(hashBuffer)) // convertit le buffer en tableau d'octet
   const hashHex = hashArray.map((b) => b.toString(16).padStart(2, "0")).join("") // convertit le tableau en chaîne hexadélimale
