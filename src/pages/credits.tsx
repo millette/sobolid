@@ -10,7 +10,7 @@ import { pathPrefix } from "../routes"
 
 async function hv() {
   if (import.meta.env.MODE !== "production") return import.meta.env.MODE
-  const res = await fetch("/manifest.json")
+  const res = await fetch(`${pathPrefix}manifest.json`)
   const json = await res.json()
   const msgUint8 = new TextEncoder().encode(json) // encode comme (utf-8) Uint8Array
   if (!(crypto && crypto.subtle && crypto.subtle.digest)) return "v.unknown"
