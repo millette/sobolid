@@ -1,6 +1,6 @@
 {
   "index.html": {
-    "file": "assets/index.d9c70795.js",
+    "file": "assets/index.ef754717.js",
     "src": "index.html",
     "isEntry": true,
     "imports": [
@@ -30,7 +30,7 @@
     ]
   },
   "src/pages/credits.tsx": {
-    "file": "assets/credits.0980bda6.js",
+    "file": "assets/credits.db200ed1.js",
     "src": "src/pages/credits.tsx",
     "isDynamicEntry": true,
     "imports": [
