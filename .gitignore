@@ -2,4 +2,5 @@ node_modules/
 dist/
 .husky/
 src/utils/viewbox.ts
+package-lock.json
 
