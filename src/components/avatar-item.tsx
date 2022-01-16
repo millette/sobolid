@@ -12,47 +12,47 @@ export default function AvatarItem(props: {
   partsFileName: string
 }): JSX.Element {
   const [name1, setName1] = createSignal(0)
-  const [shirts] = createResource(props.partsFileName, parseIt)
+  const [parts] = createResource(props.partsFileName, parseIt)
 
   function s1(): string {
-    if (shirts()[name1()][1] > 1)
-      return `${shirts()[name1()][0]}_1_of_${shirts()[name1()][1]}`
-    return shirts()[name1()][0]
+    if (parts()[name1()][1] > 1)
+      return `${parts()[name1()][0]}_1_of_${parts()[name1()][1]}`
+    return parts()[name1()][0]
   }
 
   function s2(): string {
-    if (shirts()[name1()][1] > 1)
-      return `${shirts()[name1()][0]}_2_of_${shirts()[name1()][1]}`
+    if (parts()[name1()][1] > 1)
+      return `${parts()[name1()][0]}_2_of_${parts()[name1()][1]}`
     return ""
   }
 
   function s3(): string {
-    if (shirts()[name1()][1] > 2)
-      return `${shirts()[name1()][0]}_3_of_${shirts()[name1()][1]}`
+    if (parts()[name1()][1] > 2)
+      return `${parts()[name1()][0]}_3_of_${parts()[name1()][1]}`
     return ""
   }
 
   function s4(): string {
-    if (shirts()[name1()][1] > 3)
-      return `${shirts()[name1()][0]}_4_of_${shirts()[name1()][1]}`
+    if (parts()[name1()][1] > 3)
+      return `${parts()[name1()][0]}_4_of_${parts()[name1()][1]}`
     return ""
   }
 
   function s5(): string {
-    if (shirts()[name1()][1] > 4)
-      return `${shirts()[name1()][0]}_5_of_${shirts()[name1()][1]}`
+    if (parts()[name1()][1] > 4)
+      return `${parts()[name1()][0]}_5_of_${parts()[name1()][1]}`
     return ""
   }
 
   function s6(): string {
-    if (shirts()[name1()][1] > 5)
-      return `${shirts()[name1()][0]}_6_of_${shirts()[name1()][1]}`
+    if (parts()[name1()][1] > 5)
+      return `${parts()[name1()][0]}_6_of_${parts()[name1()][1]}`
     return ""
   }
 
   function next(): void {
-    if (shirts().length === 1) return
-    if (name1() + 1 === shirts().length) {
+    if (parts().length === 1) return
+    if (name1() + 1 === parts().length) {
       setName1(0)
     } else {
       setName1(name1() + 1)
@@ -60,16 +60,16 @@ export default function AvatarItem(props: {
   }
 
   function previous(): void {
-    if (shirts().length === 1) return
+    if (parts().length === 1) return
     if (name1() === 0) {
-      setName1(shirts().length - 1)
+      setName1(parts().length - 1)
     } else {
       setName1(name1() - 1)
     }
   }
 
   function woot(): { type: string; item: string } {
-    const p = shirts()[name1()][0].split("#")
+    const p = parts()[name1()][0].split("#")
     return {
       type: p[0].slice(14, -4),
       item: p[1],
@@ -86,9 +86,9 @@ export default function AvatarItem(props: {
 
   return (
     <div class="border-solid border-4 border-teal-600">
-      <Show when={!shirts.loading}>
+      <Show when={!parts.loading}>
         <div>
-          <Show when={shirts().length > 1}>
+          <Show when={parts().length > 1}>
             <ul class="flex items-center">
               <li class="flex-1" onClick={previous}>
                 <button class="p-2 text-white bg-indigo-600 rounded-full">
@@ -110,9 +110,9 @@ export default function AvatarItem(props: {
                 <span onClick={removeit.bind(null, woot().type)}>[remove]</span>
               </Show>
             </p>
-            <p>Layers: {shirts()[name1()][1]}</p>
+            <p>Layers: {parts()[name1()][1]}</p>
             <p>
-              Item: {woot().item} ({name1() + 1} of {shirts().length})
+              Item: {woot().item} ({name1() + 1} of {parts().length})
             </p>
           </div>
           <svg

@@ -1,6 +1,13 @@
 // npm
 import type { JSX } from "solid-js/jsx-runtime"
-import { createSignal, createResource, Show, For, createEffect } from "solid-js"
+import {
+  createSignal,
+  createResource,
+  Show,
+  For,
+  createEffect,
+  createMemo,
+} from "solid-js"
 
 // self
 import {
@@ -12,12 +19,17 @@ import {
 } from "../utils/state"
 import { pathPrefix } from "../routes"
 
+const nParts = createMemo(() => Object.keys(theParts()).length)
+
 function bodyParts(item: string): { name: string | undefined; more: string } {
-  const parts: string[] = item.split("_")
-  if (parts.length === 2 && (parts[1] === "left" || parts[1] === "right")) {
+  const elParts: string[] = item.split("_")
+  if (
+    elParts.length === 2 &&
+    (elParts[1] === "left" || elParts[1] === "right")
+  ) {
     return { name: undefined, more: item }
   }
-  return { name: parts.slice(-1)[0], more: parts.slice(0, -1).join("_") }
+  return { name: elParts.slice(-1)[0], more: elParts.slice(0, -1).join("_") }
 }
 
 async function parseIt(fn: string): Promise<Array<[string, Array<string>]>> {
@@ -47,15 +59,15 @@ export default function AvatarItemV3(props: {
   partsFileName: string
 }): JSX.Element {
   const [fullBodyId, setFullBodyId] = createSignal(pickedBody())
-  const [shirts] = createResource(props.partsFileName, parseIt)
+  const [parts] = createResource(props.partsFileName, parseIt)
 
   createEffect(() => {
     setBody(fullBodyId())
   })
 
   function fullBody() {
-    const [type, parts] = shirts()[fullBodyId()]
-    return parts.map((x) => {
+    const [type, elParts] = parts()[fullBodyId()]
+    return elParts.map((x) => {
       return `${x}_${type}`
     })
   }
@@ -84,10 +96,10 @@ export default function AvatarItemV3(props: {
 
   return (
     <div class="border-solid border-4 border-teal-600">
-      <Show when={!shirts.loading && !props.layers.loading}>
+      <Show when={!parts.loading && !props.layers.loading}>
         <div>
           <ul class="flex items-center">
-            <For each={shirts()}>
+            <For each={parts()}>
               {(item, n) => (
                 <Show when={item[0]}>
                   <li class="flex-1">
@@ -103,9 +115,11 @@ export default function AvatarItemV3(props: {
             </For>
           </ul>
           <p>
-            Number of parts: {Object.keys(theParts()).length}
-            <Show when={Object.keys(theParts()).length}>
-              {" "}
+            <Show when={!nParts()}>
+              <b>Start adding parts to the character.</b>
+            </Show>
+            <Show when={nParts()}>
+              Number of parts: {nParts()}.{" "}
               <button class="p-3 bg-red-600 text-white-300" onClick={clearChar}>
                 RESET
               </button>
