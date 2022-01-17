@@ -1,8 +1,8 @@
 lockfileVersion: 5.3
 
 overrides:
-  ansi-regex@>2.1.1 <5.0.1: ">=5.0.1"
-  follow-redirects@<1.14.7: ">=1.14.7"
+  ansi-regex: ">=5.0.1"
+  follow-redirects: ">=1.14.7"
 
 specifiers:
   "@solid-primitives/storage": 1.1.0
@@ -984,11 +984,6 @@ packages:
       type-fest: 0.21.3
     dev: true
 
-  /ansi-regex/2.1.1:
-    resolution: { integrity: sha1-w7M6te42DYbg5ijwRorn7yfWVN8= }
-    engines: { node: ">=0.10.0" }
-    dev: true
-
   /ansi-regex/5.0.1:
     resolution:
       {
@@ -1099,7 +1094,7 @@ packages:
         integrity: sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==,
       }
     dependencies:
-      follow-redirects: 1.14.6
+      follow-redirects: 1.14.7
     transitivePeerDependencies:
       - debug
     dev: true
@@ -2448,10 +2443,10 @@ packages:
       }
     dev: true
 
-  /follow-redirects/1.14.6:
+  /follow-redirects/1.14.7:
     resolution:
       {
-        integrity: sha512-fhUl5EwSJbbl8AR+uYL2KQDxLkdSjZGR36xy46AO7cOMTrCMON6Sa28FmAnC2tRTDbd/Uuzz3aJBv7EBN7JH8A==,
+        integrity: sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==,
       }
     engines: { node: ">=4.0" }
     peerDependencies:
@@ -2743,7 +2738,7 @@ packages:
     resolution: { integrity: sha1-NPUEnOHs3ysGSa8+8k5F7TVBbZE= }
     engines: { node: ">=0.10.0" }
     dependencies:
-      ansi-regex: 2.1.1
+      ansi-regex: 6.0.1
     dev: true
 
   /has-flag/3.0.0:
@@ -4599,7 +4594,7 @@ packages:
     resolution: { integrity: sha1-ajhfuIU9lS1f8F0Oiq+UJ43GPc8= }
     engines: { node: ">=0.10.0" }
     dependencies:
-      ansi-regex: 2.1.1
+      ansi-regex: 6.0.1
     dev: true
 
   /strip-ansi/4.0.0:
