@@ -13,7 +13,6 @@ export default defineConfig({
     }),
   ],
   build: {
-    // manifest: true,
     target: "esnext",
     polyfillDynamicImport: false,
   },
