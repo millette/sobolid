@@ -6,6 +6,7 @@ overrides:
 
 specifiers:
   "@solid-primitives/storage": 1.1.0
+  "@supabase/supabase-js": ^1.29.2
   "@typescript-eslint/eslint-plugin": 5.9.1
   "@typescript-eslint/parser": 5.9.1
   "@unocss/preset-wind": 0.22.4
@@ -28,6 +29,7 @@ specifiers:
 
 dependencies:
   "@solid-primitives/storage": 1.1.0_solid-js@1.3.3
+  "@supabase/supabase-js": 1.29.2
   solid-app-router: 0.2.1_solid-js@1.3.3
   solid-js: 1.3.3
   solid-meta: 0.27.3_solid-js@1.3.3
@@ -604,6 +606,55 @@ packages:
       solid-js: 1.3.3
     dev: false
 
+  /@supabase/gotrue-js/1.21.7:
+    resolution:
+      {
+        integrity: sha512-YnL4cO3Q+ugatWEtgCEnLt+Wwi0VpOVTPSSjSSUho2x3cH7+juRBTrVbYky/W6YVgAw/ZJrVUFPh/NcUCUhdmw==,
+      }
+    dependencies:
+      cross-fetch: 3.1.4
+    dev: false
+
+  /@supabase/postgrest-js/0.35.1:
+    resolution:
+      {
+        integrity: sha512-N9IOxwgKvek2HqVrC3Usr6hUWvzy53vebsoqLqUBaelu8StATTrhdqaw+9IKthQsn8qoB9A0XD2vN39SGlgd/A==,
+      }
+    dependencies:
+      cross-fetch: 3.1.4
+    dev: false
+
+  /@supabase/realtime-js/1.3.5:
+    resolution:
+      {
+        integrity: sha512-If+C0A6eT1BflFOOZNlnGw/91gNuj7f/M19/WutsPM0pjhx++8Dj0YH8z+tbgxX0nf/2UGVUMMgTBckzpk9R3g==,
+      }
+    dependencies:
+      "@types/websocket": 1.0.4
+      websocket: 1.0.34
+    dev: false
+
+  /@supabase/storage-js/1.5.0:
+    resolution:
+      {
+        integrity: sha512-ki2HT9FrCYRN3yoqWqX+u47TUHQ8lgSStAqV/97kMov1z2d+iIlqGBGVcaGDqq4NvK8CipG8IJARYM72oX+afA==,
+      }
+    dependencies:
+      cross-fetch: 3.1.4
+    dev: false
+
+  /@supabase/supabase-js/1.29.2:
+    resolution:
+      {
+        integrity: sha512-zyURfsWxGeuVQd4QfqeSyzhpplYIQznL92mATcb8uUjnoXRC+oDiVQ3Ak5mtFJlPPT1tRwEWTr5o9fr0AncOcg==,
+      }
+    dependencies:
+      "@supabase/gotrue-js": 1.21.7
+      "@supabase/postgrest-js": 0.35.1
+      "@supabase/realtime-js": 1.3.5
+      "@supabase/storage-js": 1.5.0
+    dev: false
+
   /@szmarczak/http-timer/1.1.2:
     resolution:
       {
@@ -621,12 +672,28 @@ packages:
       }
     dev: true
 
+  /@types/node/17.0.9:
+    resolution:
+      {
+        integrity: sha512-5dNBXu/FOER+EXnyah7rn8xlNrfMOQb/qXnw4NQgLkCygKBKhdmF/CA5oXVOKZLBEahw8s2WP9LxIcN/oDDRgQ==,
+      }
+    dev: false
+
   /@types/throttle-debounce/2.1.0:
     resolution:
       {
         integrity: sha512-5eQEtSCoESnh2FsiLTxE121IiE60hnMqcb435fShf4bpLRjEu1Eoekht23y6zXS9Ts3l+Szu3TARnTsA0GkOkQ==,
       }
     dev: true
+
+  /@types/websocket/1.0.4:
+    resolution:
+      {
+        integrity: sha512-qn1LkcFEKK8RPp459jkjzsfpbsx36BBt3oC3pITYtkoBw/aVX+EZFa5j3ThCRTNpLFvIMr5dSTD4RaMdilIOpA==,
+      }
+    dependencies:
+      "@types/node": 17.0.9
+    dev: false
 
   /@typescript-eslint/eslint-plugin/5.9.1_bbe74534e31a8c21f1b3522447c55341:
     resolution:
@@ -1215,6 +1282,17 @@ packages:
       picocolors: 1.0.0
     dev: true
 
+  /bufferutil/4.0.6:
+    resolution:
+      {
+        integrity: sha512-jduaYOYtnio4aIAyc6UbvPCVcgq7nYpVnucyxr6eCYg/Woad9Hf/oxxBRDnGGjPfjUm6j5O/uBWhIu4iLebFaw==,
+      }
+    engines: { node: ">=6.14.2" }
+    requiresBuild: true
+    dependencies:
+      node-gyp-build: 4.3.0
+    dev: false
+
   /builtins/1.0.3:
     resolution: { integrity: sha1-y5T662HIaWRR2zZTThQi+U8K7og= }
     dev: true
@@ -1574,6 +1652,15 @@ packages:
       capture-stack-trace: 1.0.1
     dev: true
 
+  /cross-fetch/3.1.4:
+    resolution:
+      {
+        integrity: sha512-1eAtFWdIubi6T4XPy6ei9iUFoKpUkIF971QLN8lIvvvwueI65+Nw5haMNKUwfJxabqlIIDODJKGrQ66gxC0PbQ==,
+      }
+    dependencies:
+      node-fetch: 2.6.1
+    dev: false
+
   /cross-spawn/5.1.0:
     resolution: { integrity: sha1-6L0O/uWPz/b4+UUQoKVUu/ojVEk= }
     dependencies:
@@ -1606,6 +1693,25 @@ packages:
       }
     engines: { node: ">=8" }
     dev: true
+
+  /d/1.0.1:
+    resolution:
+      {
+        integrity: sha512-m62ShEObQ39CfralilEQRjH6oAMtNCV1xJyEx5LpRYUVN+EviphDgUc/F3hnYbADmkiNs67Y+3ylmlG7Lnu+FA==,
+      }
+    dependencies:
+      es5-ext: 0.10.53
+      type: 1.2.0
+    dev: false
+
+  /debug/2.6.9:
+    resolution:
+      {
+        integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==,
+      }
+    dependencies:
+      ms: 2.0.0
+    dev: false
 
   /debug/4.3.3:
     resolution:
@@ -1802,6 +1908,35 @@ packages:
     dependencies:
       once: 1.4.0
     dev: true
+
+  /es5-ext/0.10.53:
+    resolution:
+      {
+        integrity: sha512-Xs2Stw6NiNHWypzRTY1MtaG/uJlwCk8kH81920ma8mvN8Xq1gsfhZvpkImLQArw8AHnv8MT2I45J3c0R8slE+Q==,
+      }
+    dependencies:
+      es6-iterator: 2.0.3
+      es6-symbol: 3.1.3
+      next-tick: 1.0.0
+    dev: false
+
+  /es6-iterator/2.0.3:
+    resolution: { integrity: sha1-p96IkUGgWpSwhUQDstCg+/qY87c= }
+    dependencies:
+      d: 1.0.1
+      es5-ext: 0.10.53
+      es6-symbol: 3.1.3
+    dev: false
+
+  /es6-symbol/3.1.3:
+    resolution:
+      {
+        integrity: sha512-NJ6Yn3FuDinBaBRWl/q5X/s4koRHBrgKAu+yGI6JCBeiu3qrcbJhwT2GeR/EXVfylRk8dpQVJoLEFhK+Mu31NA==,
+      }
+    dependencies:
+      d: 1.0.1
+      ext: 1.6.0
+    dev: false
 
   /esbuild-android-arm64/0.13.15:
     resolution:
@@ -2266,6 +2401,15 @@ packages:
       signal-exit: 3.0.6
       strip-final-newline: 2.0.0
     dev: true
+
+  /ext/1.6.0:
+    resolution:
+      {
+        integrity: sha512-sdBImtzkq2HpkdRLtlLWDa6w4DX22ijZLKx8BMPUuKe1c5lbN6xwQDQCxSfxBQnHZ13ls/FH0MQZx/q/gr6FQg==,
+      }
+    dependencies:
+      type: 2.5.0
+    dev: false
 
   /extend-shallow/2.0.1:
     resolution: { integrity: sha1-Ua99YUrZqfYQ6huvu5idaxxWiQ8= }
@@ -3114,7 +3258,6 @@ packages:
 
   /is-typedarray/1.0.0:
     resolution: { integrity: sha1-5HnICFjfDBsR3dppQPlgEfzaSpo= }
-    dev: true
 
   /is-what/3.14.1:
     resolution:
@@ -3601,6 +3744,10 @@ packages:
     engines: { node: ">=10" }
     dev: true
 
+  /ms/2.0.0:
+    resolution: { integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g= }
+    dev: false
+
   /ms/2.1.2:
     resolution:
       {
@@ -3627,6 +3774,26 @@ packages:
   /natural-compare/1.4.0:
     resolution: { integrity: sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc= }
     dev: true
+
+  /next-tick/1.0.0:
+    resolution: { integrity: sha1-yobR/ogoFpsBICCOPchCS524NCw= }
+    dev: false
+
+  /node-fetch/2.6.1:
+    resolution:
+      {
+        integrity: sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==,
+      }
+    engines: { node: 4.x || >=6.0.0 }
+    dev: false
+
+  /node-gyp-build/4.3.0:
+    resolution:
+      {
+        integrity: sha512-iWjXZvmboq0ja1pUGULQBexmxq8CV4xBhX7VDOTbL7ZR4FOowwY/VOtRxBN/yKxmdGoIp4j5ysNT4u3S2pDQ3Q==,
+      }
+    hasBin: true
+    dev: false
 
   /node-releases/2.0.1:
     resolution:
@@ -4855,6 +5022,20 @@ packages:
     engines: { node: ">=8" }
     dev: true
 
+  /type/1.2.0:
+    resolution:
+      {
+        integrity: sha512-+5nt5AAniqsCnu2cEQQdpzCAh33kVx8n0VoFidKpB1dVVLAN/F+bgVOqOJqOnEnrhp222clB5p3vUlD+1QAnfg==,
+      }
+    dev: false
+
+  /type/2.5.0:
+    resolution:
+      {
+        integrity: sha512-180WMDQaIMm3+7hGXWf12GtdniDEy7nYcyFMKJn/eZz/6tSLXrUN9V0wKSbMjej0I1WHWbpREDEKHtqPQa9NNw==,
+      }
+    dev: false
+
   /typedarray-to-buffer/3.1.5:
     resolution:
       {
@@ -4862,7 +5043,6 @@ packages:
       }
     dependencies:
       is-typedarray: 1.0.0
-    dev: true
 
   /typescript/4.5.4:
     resolution:
@@ -5027,6 +5207,17 @@ packages:
       rc: 1.2.8
     dev: true
 
+  /utf-8-validate/5.0.8:
+    resolution:
+      {
+        integrity: sha512-k4dW/Qja1BYDl2qD4tOMB9PFVha/UJtxTc1cXYOe3WwA/2m0Yn4qB7wLMpJyLJ/7DR0XnTut3HsCSzDT4ZvKgA==,
+      }
+    engines: { node: ">=6.14.2" }
+    requiresBuild: true
+    dependencies:
+      node-gyp-build: 4.3.0
+    dev: false
+
   /v8-compile-cache/2.3.0:
     resolution:
       {
@@ -5095,6 +5286,21 @@ packages:
     dependencies:
       lodash: 4.17.21
     dev: true
+
+  /websocket/1.0.34:
+    resolution:
+      {
+        integrity: sha512-PRDso2sGwF6kM75QykIesBijKSVceR6jL2G8NGYyq2XrItNC2P5/qL5XeR056GhA+Ly7JMFvJb9I312mJfmqnQ==,
+      }
+    engines: { node: ">=4.0.0" }
+    dependencies:
+      bufferutil: 4.0.6
+      debug: 2.6.9
+      es5-ext: 0.10.53
+      typedarray-to-buffer: 3.1.5
+      utf-8-validate: 5.0.8
+      yaeti: 0.0.6
+    dev: false
 
   /which-module/2.0.0:
     resolution: { integrity: sha1-2e8H3Od7mQK4o6j6SzHD4/fm6Ho= }
@@ -5231,6 +5437,11 @@ packages:
         integrity: sha512-JKhqTOwSrqNA1NY5lSztJ1GrBiUodLMmIZuLiDaMRJ+itFd+ABVE8XBjOvIWL+rSqNDC74LCSFmlb/U4UZ4hJQ==,
       }
     dev: true
+
+  /yaeti/0.0.6:
+    resolution: { integrity: sha1-8m9ITXJoTPQr7ft2lwqhYI+/lXc= }
+    engines: { node: ">=0.10.32" }
+    dev: false
 
   /yallist/2.1.2:
     resolution: { integrity: sha1-HBH5IY8HYImkfdUS+TxmmaaoHVI= }
