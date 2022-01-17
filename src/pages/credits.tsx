@@ -1,13 +1,27 @@
+// core
+import fs from "node:fs"
+
 // npm
 import type { JSX } from "solid-js/jsx-runtime"
 import { createResource, createSignal, For, Show, Suspense } from "solid-js"
 import { Title } from "solid-meta"
+// import {resolveRef} from "isomorphic-git"
+import * as git from "isomorphic-git"
 
 // self
 import AvatarItem from "../components/avatar-item"
 import Body from "../components/body"
 import { pathPrefix } from "../routes"
 
+/*
+async function hashedVersion() {
+  return git.resolveRef({ fs, dir: '.', ref: 'HEAD' })
+}
+*/
+
+// const hashedVersion = await git.resolveRef({ fs, dir: '../../', ref: 'HEAD' })
+
+/*
 async function hv() {
   if (import.meta.env.MODE !== "production") return import.meta.env.MODE
   const res = await fetch(`${pathPrefix}manifest.json`)
@@ -21,6 +35,7 @@ async function hv() {
 }
 
 const [hashedVersion] = createResource(`${pathPrefix}manifst.json`, hv)
+*/
 
 const itemTypes: string[] = [
   "sprites/whole-armband.svg",
@@ -60,6 +75,25 @@ async function tada(fn) {
   return json
 }
 
+async function hv(abc) {
+  const x = "abc123"
+  console.log("HV", abc, x)
+  const y = await git.resolveRef({
+    fs,
+    gitdir: "/home/millette/sol/ts-wind-rout/.git",
+    ref: "HEAD",
+  })
+  return x
+}
+
+/*
+async function hv(abc) {
+  const x = await git.resolveRef({ fs, gitdir: '/home/millette/sol/ts-wind-rout/.git', ref: 'HEAD' })
+  console.log("HV", abc, x)
+  return x
+}
+*/
+
 export default function Credits(): JSX.Element {
   const [selected, setSelected] = createSignal(0)
   const [layers] = createResource(
@@ -67,11 +101,13 @@ export default function Credits(): JSX.Element {
     tada
   )
 
+  const [hashedVersion] = createResource("xyz", hv)
+
   return (
     <section class="bg-pink-100 text-gray-700 p-8">
       <Title>
         Credits page
-        <Suspense> ({hashedVersion()})</Suspense>
+        <Suspense> ({hashedVersion})</Suspense>
       </Title>
       <h1 class="text-2xl font-bold">Credits</h1>
 

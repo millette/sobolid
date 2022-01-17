@@ -23,6 +23,7 @@
     "fast-glob": "3.2.11",
     "gh-pages": "^3.2.3",
     "husky": ">=6",
+    "isomorphic-git": "^1.10.4",
     "lint-staged": "12.1.7",
     "mrm": "^3.0.10",
     "prettier": ">=2",
