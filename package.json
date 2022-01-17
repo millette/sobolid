@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "VITE_HASHED_VERSION=`git rev-parse HEAD` vite build",
-    "deploy": "VITE_PATHPREFIX=/sobolid/ vite build && gh-pages -d dist",
+    "deploy": "VITE_HASHED_VERSION=`git rev-parse HEAD` VITE_PATHPREFIX=/sobolid/ vite build && gh-pages -d dist",
     "serve": "vite preview",
     "format": "prettier --loglevel warn --write \"**/*.{js,css,md,ts,yaml,json,tsx,html}\"",
     "posttest": "npm run format",
