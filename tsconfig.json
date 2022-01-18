@@ -8,6 +8,9 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "lib": ["es6", "dom"],
-    "types": ["node", "vite/client"]
+    "types": ["node", "vite/client"],
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   }
 }
