@@ -3,4 +3,5 @@ dist/
 .husky/
 src/utils/viewbox.ts
 package-lock.json
+.env.local
 
