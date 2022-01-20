@@ -7,7 +7,7 @@ import Home from "./pages/home"
 import AboutData from "./pages/about.data"
 
 // import.meta.env.VITE_... supported by VITE frontend tooling
-export const pathPrefix = import.meta.env.VITE_PATHPREFIX || "/"
+export const pathPrefix = String(import.meta.env.VITE_PATHPREFIX || "/")
 export const routes: RouteDefinition[] = [
   {
     path: "/",
