@@ -3,6 +3,7 @@ import type { JSX } from "solid-js/jsx-runtime"
 import { NavLink, useRoutes, useLocation } from "solid-app-router"
 
 // self
+import "./nav.css"
 import { pathPrefix, routes } from "~/routes"
 
 function Nav(): JSX.Element {

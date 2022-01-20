@@ -3,7 +3,6 @@ import type { JSX } from "solid-js/jsx-runtime"
 import { MetaProvider, Title } from "solid-meta"
 
 // self
-import "./styles.css"
 import Nav from "~/components/nav"
 
 function App(): JSX.Element {
