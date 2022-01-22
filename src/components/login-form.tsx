@@ -7,9 +7,7 @@ import {
   openModal,
 } from "~/utils/username-state"
 import { auth } from "~/utils/supabase"
-
-// npm
-// import { createStore } from "solid-js/store";
+import { setState } from "~/utils/session-state"
 
 function cancel(ev) {
   openModal(false)
@@ -25,7 +23,6 @@ function cancel(ev) {
 
 async function submitLogin(ev) {
   ev.preventDefault()
-  console.log("submitLogin")
   if (disabled()) return
   const email = ev.target.email.value
   const password = ev.target.password.value
@@ -38,17 +35,16 @@ async function submitLogin(ev) {
       email,
       password,
     })
-    console.log("SESSION", session)
-    console.log("USER", user)
-    console.log("PROVIDER", provider)
-    console.log("URL", url)
-    console.log("ERROR", error)
 
     setDisabled(false)
     if (error) {
       return
     }
     setUsername(email)
+    setState("session", session)
+    setState("user", user)
+    setState("provider", provider)
+    setState("url", url)
     ev.target.reset()
   } catch (e) {
     console.error("EEEEE", e)

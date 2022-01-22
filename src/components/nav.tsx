@@ -17,6 +17,7 @@ import {
   openModal,
 } from "~/utils/username-state"
 import { auth } from "~/utils/supabase"
+import { clearState } from "~/utils/session-state"
 
 const modalEl = document.getElementById("modal")
 
@@ -29,6 +30,7 @@ async function logout() {
       return
     }
     setUsername("")
+    clearState()
   } catch (e) {
     console.error("EEEEE", e)
     setDisabled(false)
@@ -100,7 +102,12 @@ function Nav(): JSX.Element {
               </button>
             </Show>
             <Show when={username()}>
-              {username()}
+              <NavLink
+                href={`${pathPrefix}profile`}
+                class="no-underline hover:underline"
+              >
+                {username()}
+              </NavLink>
               <button disabled={disabled()} onClick={logout} class="py-2 px-4">
                 Logout
               </button>

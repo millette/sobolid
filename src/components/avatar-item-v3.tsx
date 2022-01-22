@@ -87,7 +87,6 @@ export default function AvatarItemV3(props: {
   }
 
   function clearChar() {
-    console.log("CLEAR")
     clear()
     setFullBodyId(0)
     // FIXME: better reset/reload
