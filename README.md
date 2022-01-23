@@ -8,6 +8,8 @@ Items can be added to the body, the layers are all there but in no specific orde
 $ pnpm install # or npm install or yarn install
 ```
 
+Copy `.env.sample` to `.env.local` and adapt according to your supabase config.
+
 ### Learn more on the [Solid Website](https://solidjs.com)
 
 ## Available Scripts
