@@ -2,7 +2,8 @@
 import type { JSX } from "solid-js/jsx-runtime"
 import { NavLink, useRoutes, useLocation } from "solid-app-router"
 import { Portal } from "solid-js/web"
-import { Show, createEffect } from "solid-js"
+import { Show, createEffect, createResource } from "solid-js"
+import { useSupabase } from "solid-supabase"
 
 // self
 import "./nav.css"
@@ -16,42 +17,82 @@ import {
   modal,
   openModal,
 } from "~/utils/username-state"
-import { auth } from "~/utils/supabase"
-import { clearState } from "~/utils/session-state"
+// import { auth } from "~/utils/supabase"
+import { clearState, setState } from "~/utils/session-state"
 
 const modalEl = document.getElementById("modal")
 
-async function logout() {
-  setDisabled(true)
-  try {
-    const { error } = await auth.signOut()
-    setDisabled(false)
-    if (error) {
-      return
-    }
-    setUsername("")
-    clearState()
-  } catch (e) {
-    console.error("EEEEE", e)
-    setDisabled(false)
-  }
-}
-
-function loginModal() {
-  openModal((o) => !o)
-}
-
-createEffect(() => {
-  if (modal() && username()) openModal(false)
-})
-
-createEffect(() => {
-  modalEl.style.display = modal() ? "block" : "none"
-})
-
 function Nav(): JSX.Element {
+  const supabase = useSupabase()
+  console.log("SUPABASE", supabase)
+
   const location = useLocation()
   const Route: JSX.Element = useRoutes(routes, pathPrefix)
+
+  supabase.auth.onAuthStateChange((event, session) => {
+    console.log("onAuthStateChange-want-signedin", event)
+    if (event !== "SIGNED_IN") return
+    console.log("SIGNED_IN", session)
+    setState("session", session)
+    setState("user", session.user)
+    setUsername(session.user.email)
+
+    /*
+    const u = supabase.auth.user()
+    console.log("UUU", u)
+    if (u && u.email) {
+      setUsername(u.email)
+      const s = supabase.auth.session()
+      setState("session", s)
+      setState("user", u)
+    } 
+    */
+  })
+
+  // also handle logout here
+  supabase.auth.onAuthStateChange((event, session) => {
+    console.log("onAuthStateChange-want-recovery", event)
+    if (event !== "PASSWORD_RECOVERY") return
+    console.log("PASSWORD_RECOVERY", session)
+    /*
+    const u = supabase.auth.user()
+    console.log("UUU", u)
+    if (u && u.email) {
+      setUsername(u.email)
+      const s = supabase.auth.session()
+      setState("session", s)
+      setState("user", u)
+    } 
+    */
+  })
+
+  async function logout() {
+    setDisabled(true)
+    try {
+      const { error } = await supabase.auth.signOut()
+      setDisabled(false)
+      if (error) {
+        return
+      }
+      setUsername("")
+      clearState()
+    } catch (e) {
+      console.error("EEEEE", e)
+      setDisabled(false)
+    }
+  }
+
+  function loginModal() {
+    openModal((o) => !o)
+  }
+
+  createEffect(() => {
+    if (modal() && username()) openModal(false)
+  })
+
+  createEffect(() => {
+    modalEl.style.display = modal() ? "block" : "none"
+  })
 
   return (
     <>
