@@ -10,60 +10,39 @@ import "./nav.css"
 import { pathPrefix, routes } from "~/routes"
 import LoginForm from "~/components/login-form"
 import {
-  username,
-  setUsername,
+  // username,
+  // setUsername,
   disabled,
   setDisabled,
   modal,
   openModal,
 } from "~/utils/username-state"
-// import { auth } from "~/utils/supabase"
-import { clearState, setState } from "~/utils/session-state"
+import { state, clearState, setState } from "~/utils/session-state"
 
 const modalEl = document.getElementById("modal")
 
 function Nav(): JSX.Element {
   const supabase = useSupabase()
-  console.log("SUPABASE", supabase)
 
   const location = useLocation()
   const Route: JSX.Element = useRoutes(routes, pathPrefix)
 
   supabase.auth.onAuthStateChange((event, session) => {
-    console.log("onAuthStateChange-want-signedin", event)
-    if (event !== "SIGNED_IN") return
-    console.log("SIGNED_IN", session)
-    setState("session", session)
-    setState("user", session.user)
-    setUsername(session.user.email)
+    switch (event) {
+      case "SIGNED_IN":
+        console.log("SIGNED_IN")
+        setState("session", session)
+        setState("user", session.user)
+        // setUsername(session.user.email)
+        break
 
-    /*
-    const u = supabase.auth.user()
-    console.log("UUU", u)
-    if (u && u.email) {
-      setUsername(u.email)
-      const s = supabase.auth.session()
-      setState("session", s)
-      setState("user", u)
-    } 
-    */
-  })
+      case "SIGNED_IN":
+        console.log("PASSWORD_RECOVERY")
+        break
 
-  // also handle logout here
-  supabase.auth.onAuthStateChange((event, session) => {
-    console.log("onAuthStateChange-want-recovery", event)
-    if (event !== "PASSWORD_RECOVERY") return
-    console.log("PASSWORD_RECOVERY", session)
-    /*
-    const u = supabase.auth.user()
-    console.log("UUU", u)
-    if (u && u.email) {
-      setUsername(u.email)
-      const s = supabase.auth.session()
-      setState("session", s)
-      setState("user", u)
-    } 
-    */
+      default:
+        console.log("onAuthStateChange-other-event", event)
+    }
   })
 
   async function logout() {
@@ -74,7 +53,7 @@ function Nav(): JSX.Element {
       if (error) {
         return
       }
-      setUsername("")
+      // setUsername("")
       clearState()
     } catch (e) {
       console.error("EEEEE", e)
@@ -87,7 +66,7 @@ function Nav(): JSX.Element {
   }
 
   createEffect(() => {
-    if (modal() && username()) openModal(false)
+    if (modal() && state?.session?.user?.email) openModal(false)
   })
 
   createEffect(() => {
@@ -133,7 +112,7 @@ function Nav(): JSX.Element {
           </li>
 
           <li class="bg-red-300 flex items-center space-x-1 ml-auto">
-            <Show when={!username()}>
+            <Show when={!state?.session?.user?.email}>
               <button
                 disabled={disabled()}
                 onClick={loginModal}
@@ -142,12 +121,12 @@ function Nav(): JSX.Element {
                 Login
               </button>
             </Show>
-            <Show when={username()}>
+            <Show when={state?.session?.user?.email}>
               <NavLink
                 href={`${pathPrefix}profile`}
                 class="no-underline hover:underline"
               >
-                {username()}
+                {state?.session?.user?.email}
               </NavLink>
               <button disabled={disabled()} onClick={logout} class="py-2 px-4">
                 Logout

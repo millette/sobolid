@@ -14,16 +14,6 @@ const supabase = createClient(
   String(import.meta.env.VITE_SUPABASE_ANON_KEY)
 )
 
-async function woot() {
-  const u = await supabase.auth.user()
-  const s = await supabase.auth.session()
-
-  console.log("U", u)
-  console.log("S", s)
-}
-
-woot()
-
 render(
   () => (
     <SupabaseProvider client={supabase}>

@@ -4,12 +4,11 @@ import { useSupabase } from "solid-supabase"
 // self
 import "./login-form.css"
 import {
-  setUsername,
+  // setUsername,
   disabled,
   setDisabled,
   openModal,
 } from "~/utils/username-state"
-// import { auth } from "~/utils/supabase"
 import { setState } from "~/utils/session-state"
 
 function LoginForm() {
@@ -54,28 +53,19 @@ function LoginForm() {
         console.log("ERROR", error)
         return
       }
+      /*
       setUsername(email)
       setState("session", session)
       setState("user", user)
       setState("provider", provider)
       setState("url", url)
+      */
       ev.target.reset()
     } catch (e) {
       console.error("EEEEE", e)
       setDisabled(false)
     }
   }
-
-  /*
-  // http://localhost:3000/#access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNjQyOTY5OTAzLCJzdWIiOiIwMDMxZTgxNy0zMmE3LTQ4YWQtYTBiYy1jMjYwOTZlNDg5MjMiLCJlbWFpbCI6InJvYmluQG1pbGxldHRlLmluZm8iLCJwaG9uZSI6IiIsImFwcF9tZXRhZGF0YSI6eyJwcm92aWRlciI6ImVtYWlsIiwicHJvdmlkZXJzIjpbImdpdGh1YiJdfSwidXNlcl9tZXRhZGF0YSI6eyJoZWxsbzY2NiI6IndvcmxkNjY2In0sInJvbGUiOiJhdXRoZW50aWNhdGVkIn0.-fFhK2rKnKnqUs2XxUvhz_tb85hiZuTb2TVuxh3_zrQ&expires_in=3600&refresh_token=MLoGCqU-cffB6g6UqsniZQ&token_type=bearer&type=recovery
-  
-  http://localhost:3000/
-  #access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNjQyOTY5OTAzLCJzdWIiOiIwMDMxZTgxNy0zMmE3LTQ4YWQtYTBiYy1jMjYwOTZlNDg5MjMiLCJlbWFpbCI6InJvYmluQG1pbGxldHRlLmluZm8iLCJwaG9uZSI6IiIsImFwcF9tZXRhZGF0YSI6eyJwcm92aWRlciI6ImVtYWlsIiwicHJvdmlkZXJzIjpbImdpdGh1YiJdfSwidXNlcl9tZXRhZGF0YSI6eyJoZWxsbzY2NiI6IndvcmxkNjY2In0sInJvbGUiOiJhdXRoZW50aWNhdGVkIn0.-fFhK2rKnKnqUs2XxUvhz_tb85hiZuTb2TVuxh3_zrQ
-  &expires_in=3600
-  &refresh_token=MLoGCqU-cffB6g6UqsniZQ
-  &token_type=bearer
-  &type=recovery
-  */
 
   async function resetPassword(ev) {
     console.log("RESET... #1")
