@@ -41,7 +41,8 @@
     "@supabase/supabase-js": "1.29.3",
     "solid-app-router": "0.2.1",
     "solid-js": "1.3.3",
-    "solid-meta": "0.27.3"
+    "solid-meta": "0.27.3",
+    "solid-supabase": "^0.0.6"
   },
   "lint-staged": {
     "*.{js,css,md,ts,yaml,json,tsx,html}": "prettier --write"

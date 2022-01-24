@@ -23,6 +23,7 @@ specifiers:
   solid-app-router: 0.2.1
   solid-js: 1.3.3
   solid-meta: 0.27.3
+  solid-supabase: ^0.0.6
   typescript: 4.5.5
   unocss: 0.22.5
   vite: 2.7.13
@@ -34,6 +35,7 @@ dependencies:
   solid-app-router: 0.2.1_solid-js@1.3.3
   solid-js: 1.3.3
   solid-meta: 0.27.3_solid-js@1.3.3
+  solid-supabase: 0.0.6
 
 devDependencies:
   "@types/node": 17.0.10
@@ -4673,6 +4675,15 @@ packages:
       "@babel/types": 7.16.7
       solid-js: 1.3.3
     dev: true
+
+  /solid-supabase/0.0.6:
+    resolution:
+      {
+        integrity: sha512-px7QVCshG3OdsnjdsIzquCxtqOBP2axyz9AO4iPOEqNhOP/uWH0neo7x7MD/8+mDIa8TP2OrqpyXpfi9BCnysg==,
+      }
+    dependencies:
+      solid-js: 1.3.3
+    dev: false
 
   /source-map-js/1.0.1:
     resolution:
