@@ -4,7 +4,6 @@ import { useSupabase } from "solid-supabase"
 // self
 import "~/components/login-form.css"
 import { disabled, setDisabled, openModal } from "~/utils/session"
-// import { disabled, setDisabled, openModal } from "~/utils/username-state"
 
 function LoginForm() {
   const supabase = useSupabase()
@@ -14,7 +13,6 @@ function LoginForm() {
     // prevents infinite loop
     for (let r = 0; r < 50; ++r) {
       p = p.parentNode
-      // if (!p || p.reset) break
       if (!p || p.nodeName === "FORM") break
     }
     // find form and reset it
