@@ -3,9 +3,9 @@ import type { JSX } from "solid-js/jsx-runtime"
 import { createSignal, createResource, Show } from "solid-js"
 
 // self
-import { parseIt } from "../utils/parse-it"
-import { addPart, removePart, hasPart } from "../utils/state"
-import { pathPrefix } from "../routes"
+import { parseIt } from "~/utils/parse-it"
+import { addPart, removePart, hasPart } from "~/utils/bodyparts"
+import { pathPrefix } from "~/routes"
 
 export default function AvatarItem(props: {
   layers

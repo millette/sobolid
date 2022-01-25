@@ -6,11 +6,18 @@ import { Show, createEffect } from "solid-js"
 import { useSupabase } from "solid-supabase"
 
 // self
-import "./nav.css"
+import "~/components/nav.css"
 import { pathPrefix, routes } from "~/routes"
 import LoginForm from "~/components/login-form"
-import { disabled, setDisabled, modal, openModal } from "~/utils/username-state"
-import { session, clearSession, setSession } from "~/utils/session-state"
+import {
+  disabled,
+  setDisabled,
+  modal,
+  openModal,
+  session,
+  clearSession,
+  setSession,
+} from "~/utils/session"
 
 const modalEl = document.getElementById("modal")
 

@@ -1,5 +1,5 @@
 // self
-import { session } from "~/utils/session-state"
+import { session } from "~/utils/session"
 
 // npm
 import { Show } from "solid-js"

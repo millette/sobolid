@@ -5,10 +5,8 @@ import { Title } from "solid-meta"
 
 // self
 import AvatarItem from "~/components/avatar-item"
-// import AvatarItem from "../components/avatar-item"
 import Body from "~/components/body"
-// import Body from "../components/body"
-import { pathPrefix } from "../routes"
+import { pathPrefix } from "~/routes"
 
 const itemTypes: string[] = [
   "sprites/whole-armband.svg",

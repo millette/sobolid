@@ -7,7 +7,7 @@ import { createClient } from "@supabase/supabase-js"
 import { SupabaseProvider } from "solid-supabase"
 
 // self
-import App from "./app"
+import App from "~/app"
 
 const supabase = createClient(
   String(import.meta.env.VITE_SUPABASE_URL),

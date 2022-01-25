@@ -1,5 +1,5 @@
 // self
-import { pathPrefix } from "../routes"
+import { pathPrefix } from "~/routes"
 
 function isLayeredItem(item: string): { name: string; n: number } {
   const p: number = item.indexOf("_of_")

@@ -2,8 +2,9 @@
 import { useSupabase } from "solid-supabase"
 
 // self
-import "./login-form.css"
-import { disabled, setDisabled, openModal } from "~/utils/username-state"
+import "~/components/login-form.css"
+import { disabled, setDisabled, openModal } from "~/utils/session"
+// import { disabled, setDisabled, openModal } from "~/utils/username-state"
 
 function LoginForm() {
   const supabase = useSupabase()

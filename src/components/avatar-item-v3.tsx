@@ -16,8 +16,8 @@ import {
   setBody,
   theParts,
   removePart,
-} from "../utils/state"
-import { pathPrefix } from "../routes"
+} from "~/utils/bodyparts"
+import { pathPrefix } from "~/routes"
 
 const nParts = createMemo(() => Object.keys(theParts()).length)
 
