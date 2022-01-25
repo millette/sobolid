@@ -4,12 +4,15 @@ import { createStorage } from "@solid-primitives/storage"
 
 const [elStore, setElstore, { clear, remove, toJSON }] = createStorage()
 
+// TODO: prefix body parts with BP:
 function fromStore(): Record<string, string[]> {
   const j = toJSON()
   const j2 = {}
   let r
   for (r in j) {
-    if (r !== "_bodyType") j2[r] = JSON.parse(j[r])
+    if (r === "_bodyType") continue
+    if (r.startsWith("supabase.")) continue
+    j2[r] = JSON.parse(j[r])
   }
   return j2
 }
