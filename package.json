@@ -50,7 +50,9 @@
   "pnpm": {
     "overrides": {
       "ansi-regex": ">=5.0.1",
-      "follow-redirects": ">=1.14.7"
+      "follow-redirects": ">=1.14.7",
+      "nanoid": ">=3.2.0",
+      "node-fetch": ">=2.6.7"
     }
   }
 }
