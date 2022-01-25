@@ -1,18 +1,12 @@
 // npm
 import { createStore } from "solid-js/store"
 
-const [state, setState] = createStore({
-  session: null, // object
+const [session, setSession] = createStore({
   user: null, // object
-  provider: null, // string
-  url: null, // string
 })
 
-function clearState() {
-  setState("session", null)
-  setState("user", null)
-  setState("provider", null)
-  setState("url", null)
+function clearSession() {
+  setSession("user", null)
 }
 
-export { state, setState, clearState }
+export { session, setSession, clearSession }

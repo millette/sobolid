@@ -2,22 +2,15 @@
 import type { JSX } from "solid-js/jsx-runtime"
 import { NavLink, useRoutes, useLocation } from "solid-app-router"
 import { Portal } from "solid-js/web"
-import { Show, createEffect, createResource } from "solid-js"
+import { Show, createEffect } from "solid-js"
 import { useSupabase } from "solid-supabase"
 
 // self
 import "./nav.css"
 import { pathPrefix, routes } from "~/routes"
 import LoginForm from "~/components/login-form"
-import {
-  // username,
-  // setUsername,
-  disabled,
-  setDisabled,
-  modal,
-  openModal,
-} from "~/utils/username-state"
-import { state, clearState, setState } from "~/utils/session-state"
+import { disabled, setDisabled, modal, openModal } from "~/utils/username-state"
+import { session, clearSession, setSession } from "~/utils/session-state"
 
 const modalEl = document.getElementById("modal")
 
@@ -31,12 +24,10 @@ function Nav(): JSX.Element {
     switch (event) {
       case "SIGNED_IN":
         console.log("SIGNED_IN")
-        setState("session", session)
-        setState("user", session.user)
-        // setUsername(session.user.email)
+        setSession("user", session.user)
         break
 
-      case "SIGNED_IN":
+      case "PASSWORD_RECOVERY":
         console.log("PASSWORD_RECOVERY")
         break
 
@@ -53,8 +44,7 @@ function Nav(): JSX.Element {
       if (error) {
         return
       }
-      // setUsername("")
-      clearState()
+      clearSession()
     } catch (e) {
       console.error("EEEEE", e)
       setDisabled(false)
@@ -66,7 +56,7 @@ function Nav(): JSX.Element {
   }
 
   createEffect(() => {
-    if (modal() && state?.session?.user?.email) openModal(false)
+    if (modal() && session?.user?.email) openModal(false)
   })
 
   createEffect(() => {
@@ -112,7 +102,7 @@ function Nav(): JSX.Element {
           </li>
 
           <li class="bg-red-300 flex items-center space-x-1 ml-auto">
-            <Show when={!state?.session?.user?.email}>
+            <Show when={!session?.user?.email}>
               <button
                 disabled={disabled()}
                 onClick={loginModal}
@@ -121,12 +111,12 @@ function Nav(): JSX.Element {
                 Login
               </button>
             </Show>
-            <Show when={state?.session?.user?.email}>
+            <Show when={session?.user?.email}>
               <NavLink
                 href={`${pathPrefix}profile`}
                 class="no-underline hover:underline"
               >
-                {state?.session?.user?.email}
+                {session?.user?.email}
               </NavLink>
               <button disabled={disabled()} onClick={logout} class="py-2 px-4">
                 Logout

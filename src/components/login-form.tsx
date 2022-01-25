@@ -3,13 +3,7 @@ import { useSupabase } from "solid-supabase"
 
 // self
 import "./login-form.css"
-import {
-  // setUsername,
-  disabled,
-  setDisabled,
-  openModal,
-} from "~/utils/username-state"
-import { setState } from "~/utils/session-state"
+import { disabled, setDisabled, openModal } from "~/utils/username-state"
 
 function LoginForm() {
   const supabase = useSupabase()
@@ -42,24 +36,16 @@ function LoginForm() {
     setDisabled(true)
 
     try {
-      const { session, user, provider, url, error } =
-        await supabase.auth.signIn({
-          email,
-          password,
-        })
+      const { error } = await supabase.auth.signIn({
+        email,
+        password,
+      })
 
       setDisabled(false)
       if (error) {
         console.log("ERROR", error)
         return
       }
-      /*
-      setUsername(email)
-      setState("session", session)
-      setState("user", user)
-      setState("provider", provider)
-      setState("url", url)
-      */
       ev.target.reset()
     } catch (e) {
       console.error("EEEEE", e)
