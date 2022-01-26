@@ -38,6 +38,11 @@ function Nav(): JSX.Element {
         console.log("PASSWORD_RECOVERY")
         break
 
+      case "SIGNED_OUT":
+        console.log("SIGNED_OUT")
+        clearSession()
+        break
+
       default:
         console.log("onAuthStateChange-other-event", event)
     }
@@ -49,9 +54,8 @@ function Nav(): JSX.Element {
       const { error } = await supabase.auth.signOut()
       setDisabled(false)
       if (error) {
-        return
+        console.error("logout", error)
       }
-      clearSession()
     } catch (e) {
       console.error("EEEEE", e)
       setDisabled(false)
