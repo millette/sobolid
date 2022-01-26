@@ -9,17 +9,21 @@ import { useSupabase } from "solid-supabase"
 import "~/components/nav.css"
 import { pathPrefix, routes } from "~/routes"
 import LoginForm from "~/components/login-form"
+import PasswordResetForm from "~/components/password-reset-form"
 import {
   disabled,
   setDisabled,
   modal,
   openModal,
+  modalPR,
+  openModalPR,
   session,
-  // clearSession,
-  // setSession,
+  clearSession,
+  setSession,
 } from "~/utils/session"
 
-const modalEl = document.getElementById("modal")
+const modalLogin = document.getElementById("modal-login")
+const modalPasswordReset = document.getElementById("modal-password-reset")
 
 function Nav(): JSX.Element {
   const supabase = useSupabase()
@@ -27,7 +31,6 @@ function Nav(): JSX.Element {
   const location = useLocation()
   const Route: JSX.Element = useRoutes(routes, pathPrefix)
 
-  /*
   supabase.auth.onAuthStateChange((event, session) => {
     switch (event) {
       case "SIGNED_IN":
@@ -37,6 +40,7 @@ function Nav(): JSX.Element {
 
       case "PASSWORD_RECOVERY":
         console.log("PASSWORD_RECOVERY")
+        openModalPR(true)
         break
 
       case "SIGNED_OUT":
@@ -48,7 +52,6 @@ function Nav(): JSX.Element {
         console.log("onAuthStateChange-other-event", event)
     }
   })
-  */
 
   async function logout() {
     setDisabled(true)
@@ -73,7 +76,11 @@ function Nav(): JSX.Element {
   })
 
   createEffect(() => {
-    modalEl.style.display = modal() ? "block" : "none"
+    modalLogin.style.display = modal() ? "block" : "none"
+  })
+
+  createEffect(() => {
+    modalPasswordReset.style.display = modalPR() ? "block" : "none"
   })
 
   return (
@@ -152,9 +159,11 @@ function Nav(): JSX.Element {
       </nav>
       <main>
         <Route />
-
-        <Portal mount={modalEl}>
+        <Portal mount={modalLogin}>
           <LoginForm />
+        </Portal>
+        <Portal mount={modalPasswordReset}>
+          <PasswordResetForm />
         </Portal>
       </main>
     </>

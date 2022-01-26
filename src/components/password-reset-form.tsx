@@ -2,11 +2,11 @@
 import { useSupabase } from "solid-supabase"
 
 // self
-import "~/components/login-form.css"
+import "~/components/password-reset-form.css"
 import { disabled, setDisabled, openModal } from "~/utils/session"
 import parentForm from "~/utils/parent-form"
 
-function LoginForm() {
+function PasswordResetForm() {
   const supabase = useSupabase()
 
   function cancel(ev) {
@@ -15,20 +15,24 @@ function LoginForm() {
     if (p) p.reset()
   }
 
-  async function submitLogin(ev) {
+  async function submitPasswordReset(ev) {
     ev.preventDefault()
     if (disabled()) return
-    const email = ev.target.email.value
+    // const email = ev.target.email.value
     const password = ev.target.password.value
-    if (!email || !password) return
+    const passwordTwice = ev.target["password-twice"].value
+    if (!password || password !== passwordTwice) return
 
     setDisabled(true)
 
     try {
+      /*
       const { error } = await supabase.auth.signIn({
-        email,
+        // email,
         password,
       })
+      */
+      const error = false
 
       setDisabled(false)
       if (error) {
@@ -42,6 +46,7 @@ function LoginForm() {
     }
   }
 
+  /*
   async function resetPassword(ev) {
     console.log("RESET... #1")
     if (disabled()) return
@@ -76,22 +81,19 @@ function LoginForm() {
       setDisabled(false)
     }
   }
+  */
 
   return (
-    <form onSubmit={submitLogin}>
+    <form onSubmit={submitPasswordReset}>
       <label>
-        email: <input disabled={disabled()} type="email" name="email" />
+        new password: <input type="password" name="password" />
       </label>
       <br />
       <label>
-        password:{" "}
-        <input disabled={disabled()} type="password" name="password" />
+        new password (again): <input type="password" name="password-twice" />
       </label>
       <br />
-      <button disabled={disabled()}>Login</button>
-      <button onClick={resetPassword} type="button">
-        Reset password
-      </button>
+      <button disabled={disabled()}>Change password</button>
       <button onClick={cancel} type="button">
         Cancel
       </button>
@@ -99,4 +101,4 @@ function LoginForm() {
   )
 }
 
-export default LoginForm
+export default PasswordResetForm
