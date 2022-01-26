@@ -15,8 +15,8 @@ import {
   modal,
   openModal,
   session,
-  clearSession,
-  setSession,
+  // clearSession,
+  // setSession,
 } from "~/utils/session"
 
 const modalEl = document.getElementById("modal")
@@ -27,6 +27,7 @@ function Nav(): JSX.Element {
   const location = useLocation()
   const Route: JSX.Element = useRoutes(routes, pathPrefix)
 
+  /*
   supabase.auth.onAuthStateChange((event, session) => {
     switch (event) {
       case "SIGNED_IN":
@@ -47,6 +48,7 @@ function Nav(): JSX.Element {
         console.log("onAuthStateChange-other-event", event)
     }
   })
+  */
 
   async function logout() {
     setDisabled(true)
