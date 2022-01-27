@@ -3,7 +3,7 @@ import { useSupabase } from "solid-supabase"
 
 // self
 import "~/components/password-reset-form.css"
-import { disabled, setDisabled, openModal } from "~/utils/session"
+import { disabled, setDisabled, openModal, openModalPR } from "~/utils/session"
 import parentForm from "~/utils/parent-form"
 
 function PasswordResetForm() {
@@ -26,20 +26,15 @@ function PasswordResetForm() {
     setDisabled(true)
 
     try {
-      /*
-      const { error } = await supabase.auth.signIn({
-        // email,
-        password,
-      })
-      */
-      const error = false
-
+      const { user, error } = await supabase.auth.update({ password })
+      console.log("USER-change-pw", user)
       setDisabled(false)
       if (error) {
         console.log("ERROR", error)
         return
       }
       ev.target.reset()
+      openModalPR(false)
     } catch (e) {
       console.error("EEEEE", e)
       setDisabled(false)

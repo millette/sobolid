@@ -48,8 +48,13 @@ function Nav(): JSX.Element {
         clearSession()
         break
 
+      case "USER_UPDATED":
+        console.log("USER_UPDATED")
+        setSession("user", session.user)
+        break
+
       default:
-        console.log("onAuthStateChange-other-event", event)
+        console.log("onAuthStateChange-other-event", event, session)
     }
   })
 
