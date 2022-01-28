@@ -9,12 +9,15 @@ import { useSupabase } from "solid-supabase"
 import "~/components/nav.css"
 import { pathPrefix, routes } from "~/routes"
 import LoginForm from "~/components/login-form"
+import RegisterForm from "~/components/register-form"
 import PasswordResetForm from "~/components/password-reset-form"
 import {
   disabled,
   setDisabled,
   modal,
   openModal,
+  modalRegister,
+  openModalRegister,
   modalPR,
   openModalPR,
   session,
@@ -22,8 +25,9 @@ import {
   setSession,
 } from "~/utils/session"
 
-const modalLogin = document.getElementById("modal-login")
-const modalPasswordReset = document.getElementById("modal-password-reset")
+const modalLoginEl = document.getElementById("modal-login")
+const modalPasswordResetEl = document.getElementById("modal-password-reset")
+const modalRegisterEl = document.getElementById("modal-register")
 
 function Nav(): JSX.Element {
   const supabase = useSupabase()
@@ -72,8 +76,14 @@ function Nav(): JSX.Element {
     }
   }
 
+  function registerModal() {
+    openModalRegister((o) => !o)
+    openModal(false)
+  }
+
   function loginModal() {
     openModal((o) => !o)
+    openModalRegister(false)
   }
 
   createEffect(() => {
@@ -81,11 +91,15 @@ function Nav(): JSX.Element {
   })
 
   createEffect(() => {
-    modalLogin.style.display = modal() ? "block" : "none"
+    modalLoginEl.style.display = modal() ? "block" : "none"
   })
 
   createEffect(() => {
-    modalPasswordReset.style.display = modalPR() ? "block" : "none"
+    modalPasswordResetEl.style.display = modalPR() ? "block" : "none"
+  })
+
+  createEffect(() => {
+    modalRegisterEl.style.display = modalRegister() ? "block" : "none"
   })
 
   return (
@@ -126,24 +140,36 @@ function Nav(): JSX.Element {
             </NavLink>
           </li>
 
-          <li class="bg-red-300 flex items-center space-x-1 ml-auto">
+          <li class="flex items-center space-x-1 ml-auto">
             <Show when={!session?.user?.email}>
               <button
                 disabled={disabled()}
                 onClick={loginModal}
-                class="py-2 px-4"
+                class="bg-red-300 py-2 px-4"
               >
                 Login
+              </button>
+
+              <button
+                disabled={disabled()}
+                onClick={registerModal}
+                class="bg-red-300 py-2 px-4"
+              >
+                Register
               </button>
             </Show>
             <Show when={session?.user?.email}>
               <NavLink
                 href={`${pathPrefix}profile`}
-                class="no-underline hover:underline"
+                class="bg-red-300 py-2 px-4 no-underline hover:underline"
               >
                 {session?.user?.email}
               </NavLink>
-              <button disabled={disabled()} onClick={logout} class="py-2 px-4">
+              <button
+                disabled={disabled()}
+                onClick={logout}
+                class="bg-red-300 py-2 px-4"
+              >
                 Logout
               </button>
             </Show>
@@ -164,11 +190,14 @@ function Nav(): JSX.Element {
       </nav>
       <main>
         <Route />
-        <Portal mount={modalLogin}>
+        <Portal mount={modalLoginEl}>
           <LoginForm />
         </Portal>
-        <Portal mount={modalPasswordReset}>
+        <Portal mount={modalPasswordResetEl}>
           <PasswordResetForm />
+        </Portal>
+        <Portal mount={modalRegisterEl}>
+          <RegisterForm />
         </Portal>
       </main>
     </>

@@ -2,7 +2,6 @@
 import { useSupabase } from "solid-supabase"
 
 // self
-import "~/components/password-reset-form.css"
 import { disabled, setDisabled, openModal, openModalPR } from "~/utils/session"
 import parentForm from "~/utils/parent-form"
 

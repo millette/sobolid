@@ -89,10 +89,10 @@ function LoginForm() {
       </label>
       <br />
       <button disabled={disabled()}>Login</button>
-      <button onClick={resetPassword} type="button">
+      <button disabled={disabled()} onClick={resetPassword} type="button">
         Reset password
       </button>
-      <button onClick={cancel} type="button">
+      <button disabled={disabled()} onClick={cancel} type="button">
         Cancel
       </button>
     </form>

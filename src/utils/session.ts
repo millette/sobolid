@@ -4,6 +4,7 @@ import { createSignal } from "solid-js"
 
 const [disabled, setDisabled] = createSignal(false)
 const [modal, openModal] = createSignal(false)
+const [modalRegister, openModalRegister] = createSignal(false)
 const [modalPR, openModalPR] = createSignal(false)
 const [session, setSession] = createStore({
   user: null, // object
@@ -18,6 +19,8 @@ export {
   setDisabled,
   modal,
   openModal,
+  modalRegister,
+  openModalRegister,
   modalPR,
   openModalPR,
   session,
