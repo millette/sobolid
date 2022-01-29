@@ -2,7 +2,7 @@
 import { createSignal } from "solid-js"
 import { createStorage } from "@solid-primitives/storage"
 
-const [elStore, setElstore, { clear, remove, toJSON }] = createStorage()
+const [elStore, setElstore, { remove, toJSON }] = createStorage()
 
 // TODO: prefix body parts with BP:
 function fromStore(): Record<string, string[]> {
