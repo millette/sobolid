@@ -25,10 +25,6 @@ function LoginForm() {
       setModalMessage("Missing email")
       return
     }
-    if (!password) {
-      setModalMessage("Missing password")
-      return
-    }
 
     setDisabled(true)
 
@@ -44,6 +40,7 @@ function LoginForm() {
         return
       }
       ev.target.reset()
+      setModalMessage("Check email for Magic Link to login")
     } catch (e) {
       setModalMessage(e)
       setDisabled(false)
