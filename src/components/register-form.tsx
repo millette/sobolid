@@ -4,6 +4,7 @@ import { useSupabase } from "solid-supabase"
 // self
 import { disabled, setDisabled, openModalRegister } from "~/utils/session"
 import parentForm from "~/utils/parent-form"
+import { setModalMessage } from "~/components/modal-message"
 
 function RegisterForm() {
   const supabase = useSupabase()
@@ -20,31 +21,36 @@ function RegisterForm() {
     const email = ev.target.email.value
     const password = ev.target.password.value
     const passwordTwice = ev.target["password-twice"].value
-    console.log("ok to Register?")
-    if (!email || !password || password !== passwordTwice) return
-    console.log("YES! Register")
+
+    if (!email) {
+      setModalMessage("Missing email")
+      return
+    }
+    if (!password) {
+      setModalMessage("Missing password")
+      return
+    }
+    if (password !== passwordTwice) {
+      setModalMessage("Passwords don't match")
+      return
+    }
 
     setDisabled(true)
-
-    // setTimeout(() => setDisabled(false), 666)
-    // return
     try {
-      const { error, user, session } = await supabase.auth.signUp({
+      const { error } = await supabase.auth.signUp({
         email,
         password,
       })
 
-      console.log("REG-USER", user)
-      console.log("REG-SESS", session)
-
       setDisabled(false)
       if (error) {
-        console.log("ERROR", error)
+        setModalMessage(error.message)
         return
       }
+      setModalMessage("Check your email for validation link")
       ev.target.reset()
     } catch (e) {
-      console.error("EEEEE", e)
+      setModalMessage(e)
       setDisabled(false)
     }
   }

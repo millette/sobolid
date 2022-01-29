@@ -40,7 +40,7 @@ function LoginForm() {
 
       setDisabled(false)
       if (error) {
-        setModalMessage(String(error))
+        setModalMessage(error.message)
         return
       }
       ev.target.reset()
@@ -63,17 +63,15 @@ function LoginForm() {
 
     setDisabled(true)
     try {
-      const { data, error } = await supabase.auth.api.resetPasswordForEmail(
-        email
-      )
+      const { error } = await supabase.auth.api.resetPasswordForEmail(email)
       setDisabled(false)
 
       if (error) {
-        setModalMessage(String(error))
+        setModalMessage(error.message)
         return
       }
 
-      console.log("DATA", data)
+      setModalMessage("Check your email for password reset link")
     } catch (e) {
       setModalMessage(e)
       setDisabled(false)

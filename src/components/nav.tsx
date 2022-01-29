@@ -70,7 +70,7 @@ function Nav(): JSX.Element {
       const { error } = await supabase.auth.signOut()
       setDisabled(false)
       if (error) {
-        setModalMessage(String(error))
+        setModalMessage(error.message)
       }
     } catch (e) {
       setModalMessage(e)
