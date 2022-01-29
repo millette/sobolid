@@ -45,4 +45,20 @@ function setBody(bodyType) {
   setElstore("_bodyType", bodyType)
 }
 
-export { clear, pickedBody, setBody, theParts, addPart, removePart, hasPart }
+function clearChar() {
+  const j = toJSON()
+  let r
+  for (r in j) {
+    if (!r.startsWith("supabase.")) remove(r)
+  }
+}
+
+export {
+  clearChar,
+  pickedBody,
+  setBody,
+  theParts,
+  addPart,
+  removePart,
+  hasPart,
+}

@@ -11,7 +11,7 @@ import {
 
 // self
 import {
-  clear,
+  clearChar,
   pickedBody,
   setBody,
   theParts,
@@ -86,8 +86,8 @@ export default function AvatarItemV3(props: {
     return props.layers().bodyFront.find((z) => z === x) !== undefined
   }
 
-  function clearChar() {
-    clear()
+  function clearCharAction() {
+    clearChar()
     setFullBodyId(0)
     // FIXME: better reset/reload
     window.location.href = window.location.href + "?cleared"
@@ -119,7 +119,10 @@ export default function AvatarItemV3(props: {
             </Show>
             <Show when={nParts()}>
               Number of parts: {nParts()}.{" "}
-              <button class="p-3 bg-red-600 text-white-300" onClick={clearChar}>
+              <button
+                class="p-3 bg-red-600 text-white-300"
+                onClick={clearCharAction}
+              >
                 RESET
               </button>
             </Show>
