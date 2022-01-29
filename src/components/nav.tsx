@@ -24,7 +24,13 @@ import {
   clearSession,
   setSession,
 } from "~/utils/session"
+import {
+  ModalMessage,
+  modalMessage,
+  setModalMessage,
+} from "~/components/modal-message"
 
+const modalMessageEl = document.getElementById("modal-message")
 const modalLoginEl = document.getElementById("modal-login")
 const modalPasswordResetEl = document.getElementById("modal-password-reset")
 const modalRegisterEl = document.getElementById("modal-register")
@@ -38,27 +44,23 @@ function Nav(): JSX.Element {
   supabase.auth.onAuthStateChange((event, session) => {
     switch (event) {
       case "SIGNED_IN":
-        console.log("SIGNED_IN")
         setSession("user", session.user)
         break
 
       case "PASSWORD_RECOVERY":
-        console.log("PASSWORD_RECOVERY")
         openModalPR(true)
         break
 
       case "SIGNED_OUT":
-        console.log("SIGNED_OUT")
         clearSession()
         break
 
       case "USER_UPDATED":
-        console.log("USER_UPDATED")
         setSession("user", session.user)
         break
 
       default:
-        console.log("onAuthStateChange-other-event", event, session)
+        console.log("onAuthStateChange", event, session)
     }
   })
 
@@ -68,10 +70,10 @@ function Nav(): JSX.Element {
       const { error } = await supabase.auth.signOut()
       setDisabled(false)
       if (error) {
-        console.error("logout", error)
+        setModalMessage(String(error))
       }
     } catch (e) {
-      console.error("EEEEE", e)
+      setModalMessage(e)
       setDisabled(false)
     }
   }
@@ -85,6 +87,21 @@ function Nav(): JSX.Element {
     openModal((o) => !o)
     openModalRegister(false)
   }
+
+  createEffect(() => {
+    const msg = modalMessage()
+    if (msg) {
+      modalMessageEl.style.display = "block"
+      const el = modalMessageEl.querySelector(".error-message")
+
+      el.innerHTML = msg
+      setTimeout(() => {
+        setModalMessage("")
+      }, 5000)
+    } else {
+      modalMessageEl.style.display = "none"
+    }
+  })
 
   createEffect(() => {
     if (modal() && session?.user?.email) openModal(false)
@@ -190,6 +207,11 @@ function Nav(): JSX.Element {
       </nav>
       <main>
         <Route />
+
+        <Portal mount={modalMessageEl}>
+          <ModalMessage />
+        </Portal>
+
         <Portal mount={modalLoginEl}>
           <LoginForm />
         </Portal>

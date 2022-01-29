@@ -6,6 +6,17 @@
     <meta name="description" content="Avatar, an earful bender" />
     <meta name="theme-color" content="#000000" />
     <style>
+      #modal-message {
+        position: absolute;
+        display: none;
+        border: thick double red;
+        color: black;
+        background-color: yellow;
+        padding: 1rem;
+        right: 35vh;
+        top: 5vw;
+      }
+
       #modal-login,
       #modal-register,
       #modal-password-reset {
@@ -23,6 +34,7 @@
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script src="/src/index.tsx" type="module"></script>
     <div id="root"></div>
+    <div id="modal-message"></div>
     <div id="modal-login"></div>
     <div id="modal-register"></div>
     <div id="modal-password-reset"></div>

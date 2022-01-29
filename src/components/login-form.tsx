@@ -5,6 +5,7 @@ import { useSupabase } from "solid-supabase"
 import "~/components/login-form.css"
 import { disabled, setDisabled, openModal } from "~/utils/session"
 import parentForm from "~/utils/parent-form"
+import { setModalMessage } from "~/components/modal-message"
 
 function LoginForm() {
   const supabase = useSupabase()
@@ -20,7 +21,14 @@ function LoginForm() {
     if (disabled()) return
     const email = ev.target.email.value
     const password = ev.target.password.value
-    if (!email || !password) return
+    if (!email) {
+      setModalMessage("Missing email")
+      return
+    }
+    if (!password) {
+      setModalMessage("Missing password")
+      return
+    }
 
     setDisabled(true)
 
@@ -32,47 +40,42 @@ function LoginForm() {
 
       setDisabled(false)
       if (error) {
-        console.log("ERROR", error)
+        setModalMessage(String(error))
         return
       }
       ev.target.reset()
     } catch (e) {
-      console.error("EEEEE", e)
+      setModalMessage(e)
       setDisabled(false)
     }
   }
 
   async function resetPassword(ev) {
-    console.log("RESET... #1")
     if (disabled()) return
-    console.log("RESET... #2")
     const p = parentForm(ev.target)
-    console.log("RESET... #3")
     if (!p) return
 
     const email = p.email.value
-    console.log("RESET... #4")
-    if (!email) return
+    if (!email) {
+      setModalMessage("Missing email")
+      return
+    }
 
     setDisabled(true)
     try {
-      console.log("RESET... #5")
-
       const { data, error } = await supabase.auth.api.resetPasswordForEmail(
         email
       )
       setDisabled(false)
-      console.log("RESET... #6")
 
       if (error) {
-        console.log("ERROR", error)
+        setModalMessage(String(error))
         return
       }
-      console.log("RESET... #7")
+
       console.log("DATA", data)
     } catch (e) {
-      console.log("RESET... #8")
-      console.error("EEEEE", e)
+      setModalMessage(e)
       setDisabled(false)
     }
   }
