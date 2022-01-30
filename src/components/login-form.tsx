@@ -10,6 +10,25 @@ import { setModalMessage } from "~/components/modal-message"
 function LoginForm() {
   const supabase = useSupabase()
 
+  async function githubLogin(ev) {
+    if (disabled()) return
+    setDisabled(true)
+
+    try {
+      // this reloads the page, makes handling errors a bit more difficult
+      const { error } = await supabase.auth.signIn({ provider: "github" })
+      setDisabled(false)
+      if (error) {
+        setModalMessage(error.message)
+        return
+      }
+      openModal(false)
+    } catch (e) {
+      setModalMessage(e)
+      setDisabled(false)
+    }
+  }
+
   function cancel(ev) {
     openModal(false)
     const p = parentForm(ev.target)
@@ -40,7 +59,8 @@ function LoginForm() {
         return
       }
       ev.target.reset()
-      setModalMessage("Check email for Magic Link to login")
+      if (!email) setModalMessage("Check email for Magic Link to login")
+      openModal(false)
     } catch (e) {
       setModalMessage(e)
       setDisabled(false)
@@ -77,6 +97,13 @@ function LoginForm() {
 
   return (
     <form onSubmit={submitLogin}>
+      Login with:{" "}
+      <button disabled={disabled()} type="button" onClick={githubLogin}>
+        github
+      </button>{" "}
+      <button type="button" disabled>
+        facebook
+      </button>
       <label>
         email: <input disabled={disabled()} type="email" name="email" />
       </label>
