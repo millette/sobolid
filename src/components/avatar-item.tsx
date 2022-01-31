@@ -108,12 +108,10 @@ export default function AvatarItem(props: {
               Name: {typeItem().type}
               <Show when={hasPart(typeItem().type)}>
                 <span
-                  onClick={
-                    removeit.bind(
-                      null,
-                      typeItem().type
-                    ) /* eslint-disable-line solid/reactivity */
-                  }
+                  onClick={removeit.bind(
+                    null,
+                    typeItem().type /* eslint-disable-line solid/reactivity */
+                  )}
                 >
                   [remove]
                 </span>
@@ -127,12 +125,10 @@ export default function AvatarItem(props: {
           <svg
             viewBox="0 0 560 560"
             class="bg-white"
-            onClick={
-              punch.bind(
-                null,
-                typeItem().type
-              ) /* eslint-disable-line solid/reactivity */
-            }
+            onClick={punch.bind(
+              null,
+              typeItem().type /* eslint-disable-line solid/reactivity */
+            )}
           >
             <Show when={s6()}>
               <use href={`${pathPrefix}${s6()}`}></use>
