@@ -59,7 +59,8 @@ export default function AvatarItemV3(props: {
   partsFileName: string
 }): JSX.Element {
   const [fullBodyId, setFullBodyId] = createSignal(pickedBody())
-  const [parts] = createResource(props.partsFileName, parseIt)
+
+  const [parts] = createResource(props.partsFileName, parseIt) // eslint-disable-line solid/reactivity
 
   createEffect(() => {
     setBody(fullBodyId())
@@ -103,7 +104,12 @@ export default function AvatarItemV3(props: {
                 <Show when={item[0]}>
                   <li class="flex-1">
                     <button
-                      onClick={setFullBodyId.bind(null, n())}
+                      onClick={
+                        setFullBodyId.bind(
+                          null,
+                          n()
+                        ) /* eslint-disable-line solid/reactivity */
+                      }
                       class="p-2 text-white bg-red-600 rounded-full"
                     >
                       {item[0]}

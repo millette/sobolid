@@ -58,6 +58,9 @@ export default function Credits(): JSX.Element {
       ? `v.${import.meta.env.VITE_HASHED_VERSION}`
       : import.meta.env.MODE
 
+  //      <button onClick={setSelected.bind(null, i())}>
+  //              <button onClick={[setSelected, i()]}>
+
   return (
     <section class="bg-pink-100 text-gray-700 p-8">
       <Title>Credits page ({hashedVersion})</Title>
@@ -74,7 +77,14 @@ export default function Credits(): JSX.Element {
         <For each={itemTypes} fallback={<div>Loading...</div>}>
           {(item, i) => (
             <div>
-              <button onClick={setSelected.bind(null, i())}>
+              <button
+                onClick={
+                  setSelected.bind(
+                    null,
+                    i()
+                  ) /* eslint-disable-line solid/reactivity */
+                }
+              >
                 {itemName(item)}
               </button>
               <Show when={i() === selected()}>

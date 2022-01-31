@@ -12,7 +12,7 @@ export default function AvatarItem(props: {
   partsFileName: string
 }): JSX.Element {
   const [name1, setName1] = createSignal(0)
-  const [parts] = createResource(props.partsFileName, parseIt)
+  const [parts] = createResource(props.partsFileName, parseIt) // eslint-disable-line solid/reactivity
 
   function s1(): string {
     if (parts()[name1()][1] > 1)
@@ -68,7 +68,7 @@ export default function AvatarItem(props: {
     }
   }
 
-  function woot(): { type: string; item: string } {
+  function typeItem(): { type: string; item: string } {
     const p = parts()[name1()][0].split("#")
     return {
       type: p[0].slice(14, -4),
@@ -105,20 +105,34 @@ export default function AvatarItem(props: {
 
           <div>
             <p>
-              Name: {woot().type}
-              <Show when={hasPart(woot().type)}>
-                <span onClick={removeit.bind(null, woot().type)}>[remove]</span>
+              Name: {typeItem().type}
+              <Show when={hasPart(typeItem().type)}>
+                <span
+                  onClick={
+                    removeit.bind(
+                      null,
+                      typeItem().type
+                    ) /* eslint-disable-line solid/reactivity */
+                  }
+                >
+                  [remove]
+                </span>
               </Show>
             </p>
             <p>Layers: {parts()[name1()][1]}</p>
             <p>
-              Item: {woot().item} ({name1() + 1} of {parts().length})
+              Item: {typeItem().item} ({name1() + 1} of {parts().length})
             </p>
           </div>
           <svg
             viewBox="0 0 560 560"
             class="bg-white"
-            onClick={punch.bind(null, woot().type)}
+            onClick={
+              punch.bind(
+                null,
+                typeItem().type
+              ) /* eslint-disable-line solid/reactivity */
+            }
           >
             <Show when={s6()}>
               <use href={`${pathPrefix}${s6()}`}></use>
