@@ -59,6 +59,14 @@ function Nav(): JSX.Element {
         setSession("user", session.user)
         break
 
+      case "TOKEN_REFRESHED":
+        console.log(
+          "TOKEN_REFRESHED, valid until",
+          new Date(session.expires_at * 1000)
+        )
+        setSession("user", session.user)
+        break
+
       default:
         console.log("onAuthStateChange", event, session)
     }
@@ -205,7 +213,7 @@ function Nav(): JSX.Element {
           </li>
         </ul>
       </nav>
-      <main>
+      <main class="lg:container mx-auto lg:px-4">
         <Route />
 
         <Portal mount={modalMessageEl}>
