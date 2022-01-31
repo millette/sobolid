@@ -77,14 +77,7 @@ export default function Credits(): JSX.Element {
         <For each={itemTypes} fallback={<div>Loading...</div>}>
           {(item, i) => (
             <div>
-              <button
-                onClick={setSelected.bind(
-                  null,
-                  i() /* eslint-disable-line solid/reactivity */
-                )}
-              >
-                {itemName(item)}
-              </button>
+              <button onClick={() => setSelected(i())}>{itemName(item)}</button>
               <Show when={i() === selected()}>
                 <AvatarItem layers={layers} partsFileName={item} />
               </Show>

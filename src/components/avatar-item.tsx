@@ -107,14 +107,7 @@ export default function AvatarItem(props: {
             <p>
               Name: {typeItem().type}
               <Show when={hasPart(typeItem().type)}>
-                <span
-                  onClick={removeit.bind(
-                    null,
-                    typeItem().type /* eslint-disable-line solid/reactivity */
-                  )}
-                >
-                  [remove]
-                </span>
+                <span onClick={() => removeit(typeItem().type)}>[remove]</span>
               </Show>
             </p>
             <p>Layers: {parts()[name1()][1]}</p>
@@ -125,10 +118,7 @@ export default function AvatarItem(props: {
           <svg
             viewBox="0 0 560 560"
             class="bg-white"
-            onClick={punch.bind(
-              null,
-              typeItem().type /* eslint-disable-line solid/reactivity */
-            )}
+            onClick={() => punch(typeItem().type)}
           >
             <Show when={s6()}>
               <use href={`${pathPrefix}${s6()}`}></use>
