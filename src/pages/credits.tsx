@@ -78,12 +78,10 @@ export default function Credits(): JSX.Element {
           {(item, i) => (
             <div>
               <button
-                onClick={
-                  setSelected.bind(
-                    null,
-                    i()
-                  ) /* eslint-disable-line solid/reactivity */
-                }
+                onClick={setSelected.bind(
+                  null,
+                  i() /* eslint-disable-line solid/reactivity */
+                )}
               >
                 {itemName(item)}
               </button>
