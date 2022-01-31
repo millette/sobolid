@@ -10,7 +10,7 @@ import { setModalMessage } from "~/components/modal-message"
 function LoginForm() {
   const supabase = useSupabase()
 
-  async function githubLogin(ev) {
+  async function githubLogin() {
     if (disabled()) return
     setDisabled(true)
 
