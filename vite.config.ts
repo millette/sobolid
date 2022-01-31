@@ -6,6 +6,7 @@ import { defineConfig } from "vite"
 import solidPlugin from "vite-plugin-solid"
 import Unocss from "unocss/vite"
 import presetWind from "@unocss/preset-wind"
+import { visualizer } from "rollup-plugin-visualizer"
 
 export default defineConfig({
   resolve: {
@@ -23,5 +24,8 @@ export default defineConfig({
   build: {
     target: "esnext",
     polyfillDynamicImport: false,
+    rollupOptions: {
+      plugins: [visualizer()],
+    },
   },
 })
