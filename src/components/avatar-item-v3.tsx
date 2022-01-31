@@ -104,12 +104,10 @@ export default function AvatarItemV3(props: {
                 <Show when={item[0]}>
                   <li class="flex-1">
                     <button
-                      onClick={
-                        setFullBodyId.bind(
-                          null,
-                          n()
-                        ) /* eslint-disable-line solid/reactivity */
-                      }
+                      onClick={setFullBodyId.bind(
+                        null,
+                        n() /* eslint-disable-line solid/reactivity */
+                      )}
                       class="p-2 text-white bg-red-600 rounded-full"
                     >
                       {item[0]}
