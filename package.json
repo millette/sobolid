@@ -30,13 +30,12 @@
     "gh-pages": "^3.2.3",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.4",
-    "mrm": "^3.0.10",
     "prettier": "^2.5.1",
     "rollup": "^2.67.2",
     "rollup-plugin-visualizer": "^5.5.4",
     "typescript": "^4.5.5",
     "unocss": "^0.24.4",
-    "vite": "^2.8.1",
+    "vite": "^2.8.3",
     "vite-plugin-solid": "^2.2.5"
   },
   "dependencies": {
@@ -50,12 +49,5 @@
   },
   "lint-staged": {
     "*.{js,css,md,ts,yaml,json,tsx,html}": "prettier --write"
-  },
-  "pnpm": {
-    "overrides": {
-      "follow-redirects": ">=1.14.7",
-      "nanoid": ">=3.2.0",
-      "node-fetch": ">=2.6.7"
-    }
   }
 }
