@@ -24,7 +24,7 @@
     "@unocss/preset-wind": "^0.25.0",
     "@unocss/reset": "^0.25.0",
     "eslint": "8.9.0",
-    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-solid": "^0.4.4",
     "fast-glob": "^3.2.11",
     "gh-pages": "^3.2.3",
