@@ -8,7 +8,8 @@
     "preview": "vite preview",
     "format": "prettier --loglevel warn --write \"**/*.{js,css,md,ts,yaml,json,tsx,html}\"",
     "posttest": "npm run format",
-    "lint": "tsc --noEmit && eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint2": "tsc --noEmit && eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "prepare": "husky install"
   },
   "license": "MIT",
