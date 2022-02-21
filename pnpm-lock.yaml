@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   "@solid-primitives/storage": 1.1.1
   "@supabase/supabase-js": ^1.30.4
-  "@types/node": ^17.0.18
+  "@types/node": ^17.0.19
   "@typescript-eslint/eslint-plugin": ^5.12.0
   "@typescript-eslint/parser": ^5.12.0
   "@unocss/preset-wind": ^0.26.0
@@ -38,7 +38,7 @@ dependencies:
   solid-supabase: 0.0.6
 
 devDependencies:
-  "@types/node": 17.0.18
+  "@types/node": 17.0.19
   "@typescript-eslint/eslint-plugin": 5.12.0_c467cf9bb49b295941e83ce479a578b7
   "@typescript-eslint/parser": 5.12.0_eslint@8.9.0+typescript@4.5.5
   "@unocss/preset-wind": 0.26.0
@@ -726,10 +726,10 @@ packages:
       }
     dev: true
 
-  /@types/node/17.0.18:
+  /@types/node/17.0.19:
     resolution:
       {
-        integrity: sha512-eKj4f/BsN/qcculZiRSujogjvp5O/k4lOW5m35NopjZM/QwLOR075a8pJW5hD+Rtdm2DaCVPENS6KtSQnUD6BA==,
+        integrity: sha512-PfeQhvcMR4cPFVuYfBN4ifG7p9c+Dlh3yUZR6k+5yQK7wX3gDgVxBly4/WkBRs9x4dmcy1TVl08SY67wwtEvmA==,
       }
 
   /@types/throttle-debounce/2.1.0:
@@ -745,7 +745,7 @@ packages:
         integrity: sha512-NbsqiNX9CnEfC1Z0Vf4mE1SgAJ07JnRYcNex7AJ9zAVzmiGHmjKFEk7O4TJIsgv2B1sLEb6owKFZrACwdYngsQ==,
       }
     dependencies:
-      "@types/node": 17.0.18
+      "@types/node": 17.0.19
     dev: false
 
   /@typescript-eslint/eslint-plugin/5.12.0_c467cf9bb49b295941e83ce479a578b7:
