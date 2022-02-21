@@ -34,7 +34,7 @@ The build is minified and the filenames include the hashes.
 
 Your app is ready to be deployed!
 
-Preview with `npm run preview` and visiting http://localhost:5000 (vs port 3000 for dev version).
+Preview with `npm start` and visiting http://localhost:4173 (vs port 3000 for dev version).
 
 ## Deployment
 
