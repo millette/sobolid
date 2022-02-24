@@ -6,7 +6,7 @@
     "build": "VITE_HASHED_VERSION=`git rev-parse HEAD` vite build",
     "deploy": "VITE_HASHED_VERSION=`git rev-parse HEAD` VITE_PATHPREFIX=/sobolid/ vite build && gh-pages -d dist",
     "start": "vite preview",
-    "format": "prettier --loglevel warn --write \"**/*.{js,css,md,ts,yaml,json,tsx,html}\"",
+    "format": "prettier --loglevel warn --write \"**/*.{js,css,md,ts,json,tsx,html}\"",
     "posttest": "npm run format",
     "lint2": "tsc --noEmit && eslint . --ext .js,.jsx,.ts,.tsx",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
@@ -49,6 +49,6 @@
     "solid-supabase": "^0.0.6"
   },
   "lint-staged": {
-    "*.{js,css,md,ts,yaml,json,tsx,html}": "prettier --write"
+    "*.{js,css,md,ts,json,tsx,html}": "prettier --write"
   }
 }
