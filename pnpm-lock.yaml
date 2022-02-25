@@ -497,16 +497,16 @@ packages:
       solid-js: 1.3.8
     dev: false
 
-  /@supabase/gotrue-js/1.22.2:
-    resolution: {integrity: sha512-ne5XHuaqY5R/eM9SSrBUBgoB9oM2EJpf32796z/GhPakLYz5rt43KgWJv+WPZTV5Cce9opuEQMYC2YXyXYIyag==}
+  /@supabase/gotrue-js/1.22.3:
+    resolution: {integrity: sha512-w8PYtC23AQpPwwXDyd/YvEfp6O9a5Q50CGhFWNvnc6W82FayQluuJcpZ05K0rQktNvZzYxOkgOAFOm/+dvwrPQ==}
     dependencies:
       cross-fetch: 3.1.5
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@supabase/postgrest-js/0.36.0:
-    resolution: {integrity: sha512-KOnhVy8tEr/qNnvOLpFqwOkt7ilRDFMXY+JJfmLjS3+eZuna1G57w4zb3L0SdY6BL7AKnfzP5BG3yHTAuJPSww==}
+  /@supabase/postgrest-js/0.36.2:
+    resolution: {integrity: sha512-ZKQT+5ISWdsiSPDoVLnt/fiY82fUFw3lYLc2aMhx5tS3Zj6cChsWlK7NxH6ZZzo9Re/Pa/h4EoOzDZiDPywqxQ==}
     dependencies:
       cross-fetch: 3.1.5
     transitivePeerDependencies:
@@ -520,8 +520,8 @@ packages:
       websocket: 1.0.34
     dev: false
 
-  /@supabase/storage-js/1.6.2:
-    resolution: {integrity: sha512-gFCTLqG3T0ZcZ3vH4NR+tSZRXwaGNcFOV8WNvMcu2zmMws1j+YuO/GPIKvfTOqpEdEpLOtBJjfn9ut2kus3z0g==}
+  /@supabase/storage-js/1.6.4:
+    resolution: {integrity: sha512-vYcr1JGRf8Wr4v+lb8Ucl0bELwCZv8lT/PrYuhEKfJff6BI6/nTJp8rRZSRaDESQR8JlpaLaL+dmD/wsNqZnNQ==}
     dependencies:
       cross-fetch: 3.1.5
     transitivePeerDependencies:
@@ -531,10 +531,10 @@ packages:
   /@supabase/supabase-js/1.30.6:
     resolution: {integrity: sha512-OHPKyvmv7Y5mkuRK1PbHqYUwy+NxbHhovKnI6/BrjmosJVV919Mu4gtSSHa7ZIbXbWZBqo53zYa3uqd4jXsxYQ==}
     dependencies:
-      '@supabase/gotrue-js': 1.22.2
-      '@supabase/postgrest-js': 0.36.0
+      '@supabase/gotrue-js': 1.22.3
+      '@supabase/postgrest-js': 0.36.2
       '@supabase/realtime-js': 1.3.6
-      '@supabase/storage-js': 1.6.2
+      '@supabase/storage-js': 1.6.4
     transitivePeerDependencies:
       - encoding
     dev: false
@@ -1018,7 +1018,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001312
-      electron-to-chromium: 1.4.72
+      electron-to-chromium: 1.4.73
       escalade: 3.1.1
       node-releases: 2.0.2
       picocolors: 1.0.0
@@ -1307,8 +1307,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /electron-to-chromium/1.4.72:
-    resolution: {integrity: sha512-9LkRQwjW6/wnSfevR21a3k8sOJ+XWSH7kkzs9/EUenKmuDkndP3W9y1yCZpOxufwGbX3JV8glZZSDb4o95zwXQ==}
+  /electron-to-chromium/1.4.73:
+    resolution: {integrity: sha512-RlCffXkE/LliqfA5m29+dVDPB2r72y2D2egMMfIy3Le8ODrxjuZNVo4NIC2yPL01N4xb4nZQLwzi6Z5tGIGLnA==}
     dev: true
 
   /email-addresses/3.1.0:
@@ -2725,8 +2725,8 @@ packages:
       find-up: 4.1.0
     dev: true
 
-  /postcss/8.4.6:
-    resolution: {integrity: sha512-OovjwIzs9Te46vlEx7+uXB0PLijpwjXGKXjVGGPIGubGpq7uh5Xgf6D6FiJ/SzJMBosHDp6a2hiXOS97iBXcaA==}
+  /postcss/8.4.7:
+    resolution: {integrity: sha512-L9Ye3r6hkkCeOETQX6iOaWZgjp3LL6Lpqm6EtgbKrgqGGteRMNb9vzBfRL96YOSu8o7x3MfIH9Mo5cPJFGrW6A==}
     engines: {node: ^10 || ^12 || >=14}
     dependencies:
       nanoid: 3.3.1
@@ -3299,7 +3299,7 @@ packages:
         optional: true
     dependencies:
       esbuild: 0.14.23
-      postcss: 8.4.6
+      postcss: 8.4.7
       resolve: 1.22.0
       rollup: 2.68.0
     optionalDependencies:
