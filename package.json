@@ -28,7 +28,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-solid": "^0.4.4",
     "fast-glob": "^3.2.11",
-    "gh-pages": "^3.2.3",
+    "gh-pages": "^5.0.0",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.5",
     "prettier": "^2.5.1",
